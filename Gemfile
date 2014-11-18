@@ -12,8 +12,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'figaro'
-gem 'simplecov', :require => false, :group => :test
-gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'foundation-rails'
 
 group :development, :test do
@@ -25,6 +23,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'codeclimate-test-reporter', group: :test, require: nil
   gem 'capybara'
   gem 'factory_girl_rails'
 end
