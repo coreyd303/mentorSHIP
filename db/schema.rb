@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118204641) do
+ActiveRecord::Schema.define(version: 20141118215227) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "mentors", force: true do |t|
     t.string   "name"
@@ -22,16 +25,17 @@ ActiveRecord::Schema.define(version: 20141118204641) do
     t.datetime "updated_at"
   end
 
-  create_table "mentors_skills", id: false, force: true do |t|
-    t.integer "mentor_id", null: false
-    t.integer "skill_id",  null: false
-  end
-
-  add_index "mentors_skills", ["mentor_id", "skill_id"], name: "index_mentors_skills_on_mentor_id_and_skill_id"
-  add_index "mentors_skills", ["skill_id", "mentor_id"], name: "index_mentors_skills_on_skill_id_and_mentor_id"
-
   create_table "skills", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "cohort"
+    t.integer  "module_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
