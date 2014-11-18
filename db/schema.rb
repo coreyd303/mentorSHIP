@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(version: 20141118215227) do
     t.datetime "updated_at"
   end
 
-  create_table "mentors_skills", id: false, force: true do |t|
-    t.integer "mentor_id", null: false
-    t.integer "skill_id",  null: false
-  end
-
-  add_index "mentors_skills", ["mentor_id", "skill_id"], name: "index_mentors_skills_on_mentor_id_and_skill_id", using: :btree
-  add_index "mentors_skills", ["skill_id", "mentor_id"], name: "index_mentors_skills_on_skill_id_and_mentor_id", using: :btree
-
   create_table "skills", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
