@@ -13,9 +13,10 @@ class MentorsController < ApplicationController
   end
 
   def create
-    @mentor = Mentor.create(mentor_params)
+    @mentor = Mentor.new(mentor_params)
 
     if @mentor.save
+      @mentor.skills_list(params[:mentor][:skills])
       flash[:success] = "Profile was successfully create"
       redirect_to mentor_path(@mentor)
     else
@@ -25,14 +26,13 @@ class MentorsController < ApplicationController
   end
 
   def edit
-    @mentor = Mentor.find(params[:id])
   end
 
   def update
     @mentor = Mentor.find(params[:id])
-
     @mentor.update(mentor_params)
-    if @mentor.save
+    if @mentor.update
+      @mentor.skills_list(params[:mentor][:skills])
       flash[:success] = "Profile was successfully updated"
       redirect_to mentor_path(@mentor)
     else
@@ -48,6 +48,11 @@ private
                                    :email,
                                    :company,
                                    :bio,
-                                   :photo)
+                                   :photo,
+                                   :skills_list)
+  end
+
+  def skills
+    @skills = Mentor.skills
   end
 end

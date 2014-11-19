@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20141119123309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "mentor_skills", force: true do |t|
+    t.integer  "mentor_id"
+    t.integer  "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mentor_skills", ["mentor_id"], name: "index_mentor_skills_on_mentor_id", using: :btree
+  add_index "mentor_skills", ["skill_id"], name: "index_mentor_skills_on_skill_id", using: :btree
+
   create_table "mentors", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -25,14 +35,6 @@ ActiveRecord::Schema.define(version: 20141119123309) do
     t.datetime "updated_at"
     t.string   "photo"
   end
-
-  create_table "mentors_skills", id: false, force: true do |t|
-    t.integer "mentor_id", null: false
-    t.integer "skill_id",  null: false
-  end
-
-  add_index "mentors_skills", ["mentor_id", "skill_id"], name: "index_mentors_skills_on_mentor_id_and_skill_id", using: :btree
-  add_index "mentors_skills", ["skill_id", "mentor_id"], name: "index_mentors_skills_on_skill_id_and_mentor_id", using: :btree
 
   create_table "skills", force: true do |t|
     t.string   "name"

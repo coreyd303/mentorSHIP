@@ -1,4 +1,4 @@
 class MentorSkill < ActiveRecord::Base
-  belongs_to :mentors
-  belongs_to :skills
+  belongs_to :mentor
+  belongs_to :skill
 end
