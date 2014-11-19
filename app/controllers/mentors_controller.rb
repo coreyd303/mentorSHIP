@@ -26,12 +26,14 @@ class MentorsController < ApplicationController
   end
 
   def edit
+    @mentor = Mentor.find(params[:id])
   end
 
   def update
     @mentor = Mentor.find(params[:id])
     @mentor.update(mentor_params)
-    if @mentor.update
+
+    if @mentor.update(mentor_params)
       @mentor.skills_list(params[:mentor][:skills])
       flash[:success] = "Profile was successfully updated"
       redirect_to mentor_path(@mentor)
