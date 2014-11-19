@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141118215227) do
     t.string   "email"
     t.string   "company"
     t.text     "bio"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
