@@ -1,0 +1,12 @@
+<h2>A Bit About You:</h2>
+<%= form_for(@student, :html => { :class => "form-horizontal"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+
+  <%= f.check_box
+<% end %>
