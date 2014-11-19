@@ -28,7 +28,7 @@ gem 'spring',        group: :development
 
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'httparty'
+gem 'figaro'
 
 group :test, :development do
 gem 'pry'
