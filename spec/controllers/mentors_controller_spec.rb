@@ -56,10 +56,10 @@ RSpec.describe MentorsController, type: :controller do
   end
 
   def mentor_attributes
-    @attributes = {name: "Old Greg",
+    @attributes = {name:    "Old Greg",
                    company: "Bailey's",
-                   email: "ruby@example.com",
-                   bio: "Do you love me? Could you learn to love me?"}
+                   email:   "ruby@example.com",
+                   bio:     "Do you love me? Could you learn to love me?"}
   end
 
 end
