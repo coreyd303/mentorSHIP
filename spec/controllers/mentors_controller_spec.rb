@@ -1,19 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe MentorsController, type: :controller do
-
-  before(:each) do
-    5.times do
-      Mentor.create(name:    "Magik Mentor",
-                    company: "Turing",
-                    email:   "magik@example.com")
-    end
-
-    @mentors = Mentor.all
-    @mentor  = Mentor.first
-  end
+include MentorBuilder
 
   describe 'GET index' do
+    before(:each) do
+      build_mentors
+    end
+
     it 'assigns @mentors' do
       get :index
       expect(assigns(:mentors)).to eq(@mentors)
@@ -26,6 +20,10 @@ RSpec.describe MentorsController, type: :controller do
   end
 
   describe 'GET show' do
+    before(:each) do
+      build_mentor
+    end
+
     it 'assigns @mentor' do
       get :show, id: @mentor.id
       expect(assigns(:mentor)).to eq(@mentor)
@@ -45,21 +43,68 @@ RSpec.describe MentorsController, type: :controller do
   end
 
   describe 'POST create' do
-    describe 'with valid params' do
+    before(:each) do
+      mentor_attributes
+      invalid_mentor_attributes
+    end
+
+    context 'with valid params' do
       it 'creates a new mentor' do
-        mentor_attributes
         expect {
           post :create, mentor: @attributes
             }.to change(Mentor, :count).by 1
       end
+
+      it 'redirects to the new contact' do 
+        post :create, 
+        mentor: @attributes 
+        response.should redirect_to Mentor.last 
+      end 
+    end 
+
+    context 'without valid params' do
+      it 'does not save without valid params' do
+        expect {
+          post :create, mentor: @invalid_attributes
+        }.to_not change(Mentor, :count)
+      end
+
+      it 'redirects to back' do
+        post :create,
+          mentor: @invalid_attributes
+        expect(response).to render_template('new')
+      end
     end
   end
 
-  def mentor_attributes
-    @attributes = {name:    "Old Greg",
-                   company: "Bailey's",
-                   email:   "ruby@example.com",
-                   bio:     "Do you love me? Could you learn to love me?"}
-  end
+  describe 'PUT update' do 
+    before :each do
+      build_mentor 
+      mentor_attributes
+      new_mentor_attributes
+      invalid_mentor_attributes
+    end 
 
+    context "valid attributes" do 
+      it "located the requested @mentor" do
+        put :update, id: @mentor,
+          mentor: @attributes
+        assigns(:mentor).should eq(@mentor) 
+      end 
+
+      it "changes @mentor's attributes" do 
+        put :update, id: @mentor, 
+          mentor: @new_attributes
+        @mentor.reload 
+        @mentor.name.should eq("Big Bob") 
+        @mentor.email.should eq("bob@example.com") 
+      end 
+
+      it "redirects to the updated mentor" do 
+        put :update, id: @mentor, 
+          mentor: @new_attributes 
+        expect(response).to redirect_to(@mentor)
+      end 
+    end 
+  end
 end

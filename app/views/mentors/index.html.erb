@@ -60,11 +60,10 @@
   <div class="col-lg-4">
     <%= image_tag m.photo, class: "img-circle", style: "width: 140px; height: 140px;" %>
     <h2><%= link_to m.name, mentor_path(m) %></h2>
-    <p><%= @skills.each do |s| %>
+    <p>skills:
       <ul>
-        <li>s.name</li>
+        <li>skills.name</li>
       </ul>
-      <% end %>
     </p>
   </div><!-- /.col-lg-4 -->
   <% end %>
