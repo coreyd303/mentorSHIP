@@ -28,6 +28,11 @@ gem 'spring',        group: :development
 
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'httparty'
+
+group :test, :development do
+gem 'pry'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
