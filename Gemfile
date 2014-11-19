@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'figaro'
-gem 'foundation-rails'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
@@ -28,9 +28,6 @@ group :test do
   gem 'factory_girl_rails'
 end
 
-
-
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,4 +39,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

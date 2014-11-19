@@ -32,4 +32,13 @@ ActiveRecord::Schema.define(version: 20141118225123) do
     t.datetime "updated_at"
   end
 
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "cohort"
+    t.integer  "module_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
