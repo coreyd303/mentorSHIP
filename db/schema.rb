@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141119181401) do
-=======
-ActiveRecord::Schema.define(version: 20141119172734) do
->>>>>>> 7fd3f675fae073a2145b6739ff0b8b7bbac696d3
 
   create_table "mentor_skills", force: true do |t|
     t.integer  "mentor_id"
@@ -32,7 +28,6 @@ ActiveRecord::Schema.define(version: 20141119172734) do
     t.string   "email"
     t.string   "company"
     t.text     "bio"
-    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
