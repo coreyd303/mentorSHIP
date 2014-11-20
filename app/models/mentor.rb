@@ -1,4 +1,5 @@
 class Mentor < ActiveRecord::Base
+  validates :name, :email, presence: :true, on: :update
   has_many :mentor_skills
   has_many :skills, through: :mentor_skills
 

@@ -18,6 +18,23 @@ class StudentsController < ApplicationController
   def show
   end
 
+  def edit
+    @mentor = Mentor.find(params[:id])
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    @student.update(student_params)
+
+    if @student.update(student_params)
+      flash[:success] = "Profile was successfully updated"
+      redirect_to student_path(@student)
+    else
+      flash[:danger]  = "* = required fields"
+      render :edit
+    end
+  end
+
   private
 
   def student_params

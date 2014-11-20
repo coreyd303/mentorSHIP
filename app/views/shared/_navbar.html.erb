@@ -8,15 +8,14 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Mentors", mentors_path %></li>
         <li><%= link_to "Students", students_path %></li>
-        <% if current_user %>
-        <!-- if current user is_mentor -->
-        <li><%= link_to "Profile", mentors_path(current_user)  %></li>
-        <!-- else -->
-        <li><%= link_to "Profile", students_path(current_user) %></li>
-        <!-- end -->
-        <li><%= link_to "Sign Out", sign_out_path %></li>
+        <% if current_user && current_user.mentor %>
+          <li><%= link_to "Profile", mentor_path(current_user.mentor)  %></li>
+          <li><%= link_to "Sign Out", sign_out_path %></li>
+        <% elsif current_user %>
+          <li><%= link_to "Profile", student_path(current_user.student) %></li>
+          <li><%= link_to "Sign Out", sign_out_path %></li>
         <% else %>
-        <li><%= link_to "Sign In", '/auth/github/' %></li>
+          <li><%= link_to "Sign In", '/auth/github/' %></li>
         <% end %>
       </ul>
     </nav>

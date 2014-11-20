@@ -44,7 +44,7 @@ RSpec.describe StudentsController, type: :controller do
       it "does not save the new student without a name" do
         @invalid_attributes = { name: nil, bio: "Words about Harry Potter.", cohort: "1406", module_id: 1 }
 
-        expect { post :create, student: @invalid_attributes}.not_to change(Student, :count)
+        expect { put :update, student: @invalid_attributes}.not_to change(Student, :count)
       end
 
       it "does not save the new student without a cohort" do
