@@ -72,6 +72,7 @@ RSpec.describe StudentsController, type: :controller do
     it "assigns the requested student to @student" do
       user = student
       get :show, id: student
+      
       expect(user).to eq(student)
     end
 
