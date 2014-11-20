@@ -11,6 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 ActiveRecord::Schema.define(version: 20141119172734) do
 
   create_table "mentor_skills", force: true do |t|
@@ -32,6 +35,12 @@ ActiveRecord::Schema.define(version: 20141119172734) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
+  end
+
+  create_table "mods", force: true do |t|
+    t.integer  "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "skills", force: true do |t|
