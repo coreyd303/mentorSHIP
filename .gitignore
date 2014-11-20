@@ -17,3 +17,5 @@
 
 /.bundle/
 /vendor/bundle
+
+config/application.yml
