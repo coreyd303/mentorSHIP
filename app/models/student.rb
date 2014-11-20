@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-  validates :name, :cohort, :module_id, presence: true, on: :update
+  validates :name, :cohort, :mod_id, presence: true, on: :update
   belongs_to :mod
   belongs_to :posse
 

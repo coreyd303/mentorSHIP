@@ -53,7 +53,9 @@ RSpec.describe StudentsController, type: :controller do
         expect(response).to redirect_to Student.last
       end
     end
+  end
 
+  describe "update" do
     describe "with invalid params" do
       it "does not save the new student without a name" do
         @invalid_attributes = { name:     nil,
@@ -62,8 +64,8 @@ RSpec.describe StudentsController, type: :controller do
                                 mod_id:   1,
                                 posse_id: 3 }
 
-        expect { post :create,
-                 student: @invalid_attributes}.not_to change(Student, :count)
+        expect { put :update, id: student.id,
+                  student: @invalid_attributes}.not_to change(student, :name)
       end
 
       it "does not save the new student without a cohort" do
@@ -73,8 +75,8 @@ RSpec.describe StudentsController, type: :controller do
                                 mod_id:   1,
                                 posse_id: 3 }
 
-        expect { post :create,
-                 student: @invalid_attributes}.not_to change(Student, :count)
+        expect { put :update, id: student.id,
+                 student: @invalid_attributes}.not_to change(student, :cohort)
       end
 
       it "does not save the new student without a module" do
@@ -84,8 +86,8 @@ RSpec.describe StudentsController, type: :controller do
                                 mod_id:   nil,
                                 posse_id: 3 }
 
-        expect { post :create,
-                 student: @invalid_attributes}.not_to change(Student, :count)
+        expect { put :update, id: student.id,
+                 student: @invalid_attributes}.not_to change(student, :mod_id)
       end
 
       it "does not save the new student without a module" do
@@ -95,8 +97,8 @@ RSpec.describe StudentsController, type: :controller do
                                 mod_id:   1,
                                 posse_id: nil }
 
-          expect { post :create,
-            student: @invalid_attributes}.not_to change(Student, :count)
+          expect { put :update, id: student.id,
+            student: @invalid_attributes}.not_to change(student, :posse_id)
       end
 
       it "re-renders the new template if student is not saved" do
@@ -104,9 +106,9 @@ RSpec.describe StudentsController, type: :controller do
                                 bio:    "Words about Harry Potter.",
                                 cohort: nil,
                                 mod_id: 1 }
-        post :create, student: @invalid_attributes
+        put :update, id: student.id, student: @invalid_attributes
 
-        expect(response).to render_template('new')
+        expect(response).to render_template('edit')
       end
     end
   end

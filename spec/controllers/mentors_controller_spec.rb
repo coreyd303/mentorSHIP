@@ -67,19 +67,6 @@ include MentorBuilder
       end
     end
 
-    context 'without valid params' do
-      it 'does not save without valid params' do
-        expect {
-          post :create, mentor: @invalid_attributes
-        }.to_not change(Mentor, :count)
-      end
-
-      it 'redirects to back' do
-        post :create, mentor: @invalid_attributes
-
-        expect(response).to render_template('new')
-      end
-    end
   end
 
   describe 'PUT update' do
@@ -109,6 +96,20 @@ include MentorBuilder
         put :update, id: @mentor, mentor: @new_attributes
 
         expect(response).to redirect_to(@mentor)
+      end
+    end
+    
+     context 'without valid params' do
+      it 'does not save without valid params' do
+        expect {
+          put :update, id: @mentor,  mentor: @invalid_attributes
+        }.to_not change(Mentor, :count)
+      end
+
+      it 'redirects to back' do
+        put :update, id: @mentor, mentor: @invalid_attributes
+
+        expect(response).to render_template('edit')
       end
     end
   end
