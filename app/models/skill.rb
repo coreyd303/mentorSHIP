@@ -1,3 +1,6 @@
 class Skill < ActiveRecord::Base
-  has_and_belongs_to_many :mentors
+  validates :name, presence: :true
+
+  has_many :mentor_skills
+  has_many :mentors, through: :mentor_skills
 end
