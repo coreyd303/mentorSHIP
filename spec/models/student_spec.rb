@@ -1,10 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Student, :type => :model do
+  let(:posse)   { Posse.create(name: "Berners Lee") }
   let(:student) { Student.create(name:      "Harry Potter",
                                  bio:       "Wizard. Voldemort wishes he had my style.",
                                  cohort:    "1406",
-                                 module_id: 1) }
+                                 module_id: 1,
+                                 posse_id:  posse.id) }
 
   it "is valid" do
     expect(student).to be_valid
@@ -32,5 +34,9 @@ RSpec.describe Student, :type => :model do
     student.bio = nil
 
     expect(student).to be_valid
+  end
+
+  it "knows its posse name" do
+    expect(student.posse.name).to eq("Berners Lee")
   end
 end

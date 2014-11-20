@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe StudentsController, type: :controller do
   let(:student) { Student.create(name:      "Harry Potter",
-                                 bio:       "Wizard. Voldemort wishes he had my style.",
+                                 bio:       "Wizard.",
                                  cohort:    "1406",
                                  module_id: 1) }
 
@@ -26,7 +26,8 @@ RSpec.describe StudentsController, type: :controller do
                         cohort: "1406",
                         module_id: 1 }
 
-        expect { post :create, student: @attributes}.to change(Student, :count).by 1
+        expect { post :create,
+                 student: @attributes}.to change(Student, :count).by 1
       end
 
       it "saves the student in the database wihtout a bio" do
@@ -84,7 +85,7 @@ RSpec.describe StudentsController, type: :controller do
       it "re-renders the new template if student is not saved" do
         @invalid_attributes = { name: "Harry Potter",
                                 bio: "Words about Harry Potter.",
-                                cohort: nil, 
+                                cohort: nil,
                                 module_id: 1 }
         post :create, student: @invalid_attributes
 
