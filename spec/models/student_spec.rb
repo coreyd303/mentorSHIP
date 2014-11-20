@@ -10,24 +10,6 @@ RSpec.describe Student, :type => :model do
     expect(student).to be_valid
   end
 
-  it "is invalid without name" do
-    student.name = nil
-
-    expect(student).not_to be_valid
-  end
-
-  it "is invalid without cohort" do
-    student.cohort = nil
-
-    expect(student).not_to be_valid
-  end
-
-  it "is invalid without module_id" do
-    student.module_id = nil
-
-    expect(student).not_to be_valid
-  end
-
   it "is valid without a bio" do
     student.bio = nil
 
