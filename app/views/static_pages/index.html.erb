@@ -1,0 +1,86 @@
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="inner cover">
+        <p class="home-logo lead"><img src="http://www.clipartbest.com/cliparts/eiM/dgG/eiMdgGodT.png"></p>
+          <p><h1>Place holder Logo for mentorSHIP</h1></p>
+          <%= link_to "Login with GitHub", "auth/github", class: "btn btn-lg btn-default" %>
+        </p>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>
+            <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+            Browse Turing Mentors
+          </h1>
+          <p class="col-lg-4 col-lg-offset-4">Learn about all of the mentors at Turing in one convient place. Who they are, their expertise, and their backgrounds</p>
+        </div>
+      </div>
+
+      <div class="container marketing">
+        <div class="row">
+          <% @mentors.each do |m| %>
+          <div class="col-lg-4">
+            <%= image_tag m.photo, class: "img-circle", style: "width: 140px; height: 140px;" %>
+            <h2><%= link_to m.name, mentor_path(m) %></h2>
+            <p>skills:
+              <ul>
+                <li>skills.name</li>
+              </ul>
+            </p>
+          </div><!-- /.col-lg-4 -->
+          <% end %>
+        </div><!-- /.row -->
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            Build a Student Profile
+          </h1>
+          <p class="col-lg-4 col-lg-offset-4">Your profile allows you to easily share information about your current learning at Turing. Take the guess work out of what to ask for help on, make it easier to say hello and get started!</p>
+        </div>
+      </div>
+
+      <div class="container marketing">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <img src="https://robohash.org/i" class="img-circle", style="width: 250px; height: 250px;">
+            <h2>@student.name(link)</h2>
+            <p>
+                <li>@student.cohort</li>
+                <li>@student.module</li>
+            </p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+            Request Appointments and Pair
+          </h1>
+          <p class="col-lg-4 col-lg-offset-4">Once you choose a mentor, its easy to set up an appointment. Just complete the online form and mentorSHIP will do the rest!</p>
+        </div>
+      </div>
+
+      <div class="container marketing">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <img src="http://mentoring.curtin.edu.au/local/images/landing_picture.jpg" class="img-circle", style="width: 250px; height: 250px;">
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div>
+    </div>
+  </div>
+</div>
+

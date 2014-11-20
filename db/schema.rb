@@ -11,18 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141119181401) do
+=======
+ActiveRecord::Schema.define(version: 20141119172734) do
+>>>>>>> 7fd3f675fae073a2145b6739ff0b8b7bbac696d3
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "mentor_skills", force: true do |t|
+    t.integer  "mentor_id"
+    t.integer  "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mentor_skills", ["mentor_id"], name: "index_mentor_skills_on_mentor_id"
+  add_index "mentor_skills", ["skill_id"], name: "index_mentor_skills_on_skill_id"
 
   create_table "mentors", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "company"
     t.text     "bio"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo"
   end
 
   create_table "skills", force: true do |t|
@@ -42,6 +55,12 @@ ActiveRecord::Schema.define(version: 20141119181401) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string  "uid"
+    t.string  "profile_type"
+    t.integer "profile_id"
   end
 
 end

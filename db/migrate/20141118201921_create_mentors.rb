@@ -5,6 +5,7 @@ class CreateMentors < ActiveRecord::Migration
       t.string :email
       t.string :company
       t.text   :bio
+      t.string :photo
       t.timestamps
     end
   end
