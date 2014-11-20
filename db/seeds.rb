@@ -1,6 +1,5 @@
 class Seed
 
-
   10.times do |i|
     Mentor.create!(name: Faker::Name.name,
                    email: Faker::Internet.email,
