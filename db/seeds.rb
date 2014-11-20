@@ -46,7 +46,7 @@ class Seed
   mentor7.skills  << skill8
   mentor8.skills  << skill5
   mentor8.skills  << skill7
-  mentor9.skills  << skill9
+  mentor9.skills  << skill6
   mentor9.skills  << skill8
   mentor10.skills << skill4
   mentor10.skills << skill3
