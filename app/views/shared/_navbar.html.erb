@@ -5,7 +5,18 @@
     </h1>
     <nav>
       <ul>
-        <li><a href="/"></a>Home</li>
+        <li><%= link_to "Home", root_path %></li>
+        <% if current_user %>
+        <!-- if current user is_mentor -->
+        <li><%= link_to "Profile",  %></li>
+        <li><%= link_to "Mentors", mentors_path %></li>
+        <!-- else -->
+        <li><%= link_to "Students", students_path %></li>
+        <li><%= link_to "Profile",  %></li>
+        <!-- end -->
+        <% else %>
+        <li><%= link_to "Sign In", '/auth/:provider/callback' %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
