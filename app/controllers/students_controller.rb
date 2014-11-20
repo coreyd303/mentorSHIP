@@ -41,7 +41,8 @@ class StudentsController < ApplicationController
     params.require(:student).permit(:name,
                                     :bio,
                                     :cohort,
-                                    :module_id,
+                                    :mod_id,
+                                    :posse_id,
                                     :avatar)
   end
 

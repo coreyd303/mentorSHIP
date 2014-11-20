@@ -3,7 +3,7 @@ class Mentor < ActiveRecord::Base
   has_many :mentor_skills
   has_many :skills, through: :mentor_skills
 
-  def skills_list(skill_list)
+  def skills(skill_list)
     if skill_list
       valid_skills = skill_list.reject do |skill|
        skill.empty?

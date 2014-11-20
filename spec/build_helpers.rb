@@ -18,12 +18,14 @@ attr_accessor :mentors, :mentor, :attributes
     @attributes = { name:    "Old Greg",
                     company: "Bailey's",
                     email:   "ruby@example.com",
-                    bio:     "Do you love me? Could you learn to love me?" }
+                    bio:     "Do you love me? Could you learn to love me?",
+                    skills:  ["Ruby", "JavaScript"] }
   end
 
   def new_mentor_attributes
     @new_attributes = { name:  "Big Bob",
-                        email: "bob@example.com" }
+                        email: "bob@example.com",
+                        skills: ["GoLang"] }
   end
 
   def invalid_mentor_attributes

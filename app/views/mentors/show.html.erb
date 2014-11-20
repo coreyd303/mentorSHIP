@@ -10,7 +10,9 @@
       <div class="panel-body">
         <p><b>Email:</b> <%= @mentor.email %></p>
         <p><b>Employer:</b> <%= @mentor.company %></p>
-        <p><b>Best at:</b> mentor skills</p>
+        <p><b>Best at:</b><% @mentor.skills.each do |skill| %>
+          <i><%= skill.name  %><i>&nbsp
+          <% end %></p>
         <p><b>About:</b> <%= @mentor.bio %></p>
       </div>
     </div>
