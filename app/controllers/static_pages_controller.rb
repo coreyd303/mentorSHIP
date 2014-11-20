@@ -6,11 +6,12 @@ before_action :get_student, only: [:index]
   end
 
 private
+
   def get_mentors
     @mentors = Mentor.all.sample(3)
   end
 
   def get_student
-    @student = Student.all.sample(1)
+    @student = Student.all.sample(3).pop
   end
 end
