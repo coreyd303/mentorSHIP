@@ -10,11 +10,13 @@ include MentorBuilder
 
     it 'assigns @mentors' do
       get :index
+      
       expect(assigns(:mentors)).to eq(@mentors)
     end
 
     it 'renders the index template' do
       get :index
+
       expect(response).to render_template('index')
     end
   end
@@ -26,11 +28,13 @@ include MentorBuilder
 
     it 'assigns @mentor' do
       get :show, id: @mentor.id
+
       expect(assigns(:mentor)).to eq(@mentor)
     end
-    
+
     it 'renders the show template' do
       get :show, id: @mentor.id
+
       expect(response).to render_template('show')
     end
   end
@@ -38,6 +42,7 @@ include MentorBuilder
   describe 'GET new' do
     it 'assigns a new mentor @mentor' do
       get :new
+
       expect(assigns(:mentor)).to be_a_new(Mentor)
     end
   end
@@ -55,12 +60,12 @@ include MentorBuilder
             }.to change(Mentor, :count).by 1
       end
 
-      it 'redirects to the new contact' do 
-        post :create, 
-        mentor: @attributes 
-        response.should redirect_to Mentor.last 
-      end 
-    end 
+      it 'redirects to the new contact' do
+        post :create, mentor: @attributes
+
+        expect(response).to redirect_to Mentor.last
+      end
+    end
 
     context 'without valid params' do
       it 'does not save without valid params' do
@@ -70,41 +75,41 @@ include MentorBuilder
       end
 
       it 'redirects to back' do
-        post :create,
-          mentor: @invalid_attributes
+        post :create, mentor: @invalid_attributes
+
         expect(response).to render_template('new')
       end
     end
   end
 
-  describe 'PUT update' do 
+  describe 'PUT update' do
     before :each do
-      build_mentor 
+      build_mentor
       mentor_attributes
       new_mentor_attributes
       invalid_mentor_attributes
-    end 
+    end
 
-    context "valid attributes" do 
+    context "valid attributes" do
       it "located the requested @mentor" do
-        put :update, id: @mentor,
-          mentor: @attributes
-        assigns(:mentor).should eq(@mentor) 
-      end 
+        put :update, id: @mentor, mentor: @attributes
 
-      it "changes @mentor's attributes" do 
-        put :update, id: @mentor, 
-          mentor: @new_attributes
-        @mentor.reload 
-        @mentor.name.should eq("Big Bob") 
-        @mentor.email.should eq("bob@example.com") 
-      end 
+        expect(assigns(:mentor)).to eq(@mentor)
+      end
 
-      it "redirects to the updated mentor" do 
-        put :update, id: @mentor, 
-          mentor: @new_attributes 
+      it "changes @mentor's attributes" do
+        put :update, id: @mentor, mentor: @new_attributes
+        @mentor.reload
+
+        expect(@mentor.name).to  eq("Big Bob")
+        expect(@mentor.email).to eq("bob@example.com")
+      end
+
+      it "redirects to the updated mentor" do
+        put :update, id: @mentor, mentor: @new_attributes
+
         expect(response).to redirect_to(@mentor)
-      end 
-    end 
+      end
+    end
   end
 end

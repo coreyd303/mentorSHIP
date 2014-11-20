@@ -1,5 +1,5 @@
 class MentorsController < ApplicationController
-before_action :set_mentor, only: [:show, :edit]
+  before_action :set_mentor, only: [:show, :edit, :update]
 
   def index
     @mentors = Mentor.all
@@ -34,7 +34,7 @@ before_action :set_mentor, only: [:show, :edit]
     @mentor.update(mentor_params)
 
     if @mentor.update(mentor_params)
-      @mentor.skills(params[:mentor][:skills])
+      @mentor.skills = Skill.where(id: params[:mentor][:skills].reject { |i| i == "" })
       flash[:success] = "Profile was successfully updated"
       redirect_to mentor_path(@mentor)
     else
