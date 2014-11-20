@@ -8,22 +8,16 @@
     <meta name="author" content="Chad Brading, Corey Davis, Emily Davis, Tim Proctor 1406 cohort 2014">
 
     <title>mentorSHIP</title>
-    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    
+    <%= render partial: "shared/navbar" %>
     <%= yield %>
-
-    <footer class="row">
-      <div class="col-lg-6 col-md-offset-4">
-        <p>&copy; 2014 Turing School of Software &amp Design &middot; Cohort 1406 &middot; All Rights Reserved</p>
-      </div>
-    </footer>
-
+    <%= render partial: "shared/footer"%>
+    <%= javascript_include_tag "application" %>
   </body>
- 
 </html>
