@@ -69,6 +69,12 @@ class Seed
   Posse.create(name: "Sparck Jones")
   Posse.create(name: "Van Rossum")
   Posse.create(name: "Von Neumann")
+
+  Mod.create(number: 1, name: "Module One",   description: "TDD with Ruby")
+  Mod.create(number: 2, name: "Module Two",   description: "Ruby Web Applications with Sinatra & Rails")
+  Mod.create(number: 3, name: "Module Three", description: "Professional Web Applications")
+  Mod.create(number: 4, name: "Module Four",  description: "High-Performance Applications with APIs and Services")
+  Mod.create(number: 5, name: "Graduated",    description: "Alumni")
 end
 
 Seed.new
