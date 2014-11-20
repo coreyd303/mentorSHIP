@@ -22,6 +22,14 @@ RSpec.describe Student, :type => :model do
     expect(student).not_to be_valid
   end
 
+  it "cohort is two digit year and two digit month" do
+    student.cohort = "2013"
+    expect(student).not_to be_valid
+
+    student.cohort = "1503"
+    expect(student).to be_valid
+  end
+
   it 'is invalid without module_id' do
     student.module_id = nil
 
@@ -33,4 +41,6 @@ RSpec.describe Student, :type => :model do
 
     expect(student).to be_valid
   end
+
+
 end
