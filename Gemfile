@@ -11,7 +11,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
-gem 'figaro'
 gem 'bootstrap-sass'
 
 group :development, :test do
@@ -20,6 +19,7 @@ group :development, :test do
   gem 'faker'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'sqlite3'
 end
 
 group :test do
@@ -32,9 +32,6 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
 
-group :test, :development do
-gem 'pry'
-end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

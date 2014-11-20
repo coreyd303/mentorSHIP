@@ -1,3 +1,3 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'] 
+  provider :github, Figaro.env.github_id, Figaro.env.github_secret
 end
