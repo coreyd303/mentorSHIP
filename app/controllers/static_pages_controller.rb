@@ -4,5 +4,6 @@ class StaticPagesController < ApplicationController
   end
 
   def profile_type_prompt
+    @user = current_user
   end
 end

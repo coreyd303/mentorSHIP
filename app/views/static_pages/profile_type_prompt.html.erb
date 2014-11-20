@@ -1,1 +1,9 @@
-"hi"
+<%= form_for @user do |f| %>
+  <%= hidden_field_tag :profile_type, "Mentor" %>
+  <%= f.submit "Mentor" %>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= hidden_field_tag :profile_type, "Student" %>
+  <%= f.submit "Student" %>
+<% end %>

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :mentors
   resources :skills
   resources :students
+  resources :users, only: [:update]
 end
