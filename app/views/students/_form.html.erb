@@ -1,0 +1,57 @@
+<%= form_for(@student, html: { :class => "form-horizontal"}) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@student.errors.count, "error") %> prohibited this profile from being saved:</h4>
+      <ul>
+        <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group has-feedback">
+    <div class="col-md-6 col-md-offset-3">
+      <%= f.text_field :name, class: "form-control", placeholder: "* Name"  %>
+    </div>
+  </div>
+  <div class="form-group has-feedback">
+    <div class="col-md-6 col-md-offset-3">
+      <%= f.text_area :bio, class: "form-control", placeholder: "A bit about you . . . " %>
+    </div>
+  </div>
+  <div class="form-group has-feedback">
+    <div class="col-md-6 col-md-offset-3">
+      <%= f.text_field :cohort, class: "form-control", placeholder: "* Cohort: 1406, 1502, etc." %>
+    </div>
+  </div>
+  <div class="form-group has-feedback">
+    <div class="col-md-6 col-md-offset-3">
+      * <%= f.label :module, class: "control-label" %>
+      <div class="radio-inline">
+        <label>
+          <%= f.collection_radio_buttons(:mod_id, Mod.all, :id, :name) do |b| %>
+          <%= b.radio_button %>
+          <%= b.label %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <% end %>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group has-feedback">
+    <div class="col-md-6 col-md-offset-3">
+      * <%= f.label :posse, class: "control-label" %>
+      <%= f.select(:posse_id, options_from_collection_for_select(Posse.all, "id", "name"), {}, {class: "form-control"})%>
+    </div>
+  </div>
+  <div class="form-group has-feedback">
+    <div class="col-md-6 col-md-offset-3">
+      <%= f.label :photo, class: "control-label" %>
+      <%= f.file_field :avatar, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3">
+      <%= f.submit "Save Profile", class: "btn btn-large btn-info" %>
+    </div>
+  </div>
+<% end %>
