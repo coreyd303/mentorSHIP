@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119172734) do
+ActiveRecord::Schema.define(version: 20141120201556) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "mentor_skills", force: true do |t|
     t.integer  "mentor_id"
@@ -20,8 +23,8 @@ ActiveRecord::Schema.define(version: 20141119172734) do
     t.datetime "updated_at"
   end
 
-  add_index "mentor_skills", ["mentor_id"], name: "index_mentor_skills_on_mentor_id"
-  add_index "mentor_skills", ["skill_id"], name: "index_mentor_skills_on_skill_id"
+  add_index "mentor_skills", ["mentor_id"], name: "index_mentor_skills_on_mentor_id", using: :btree
+  add_index "mentor_skills", ["skill_id"], name: "index_mentor_skills_on_skill_id", using: :btree
 
   create_table "mentors", force: true do |t|
     t.string   "name"
@@ -31,6 +34,20 @@ ActiveRecord::Schema.define(version: 20141119172734) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
+  end
+
+  create_table "mods", force: true do |t|
+    t.integer  "number"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "skills", force: true do |t|
@@ -43,9 +60,14 @@ ActiveRecord::Schema.define(version: 20141119172734) do
     t.string   "name"
     t.text     "bio"
     t.string   "cohort"
-    t.integer  "module_id"
+    t.integer  "mod_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.integer  "posse_id"
   end
 
   create_table "users", force: true do |t|

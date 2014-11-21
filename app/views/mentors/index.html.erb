@@ -48,26 +48,21 @@
   </a>
 </div><!-- /.carousel -->
 
- <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
 <div class="container marketing">
-
-<!-- Three columns of text below the carousel -->
-<div class="row">
-  <% @mentors.each do |m| %>
-  <div class="col-lg-4">
-    <%= image_tag m.photo, class: "img-circle", style: "width: 140px; height: 140px;" %>
-    <h2><%= link_to m.name, mentor_path(m) %></h2>
-    <p>skills:
-      <ul>
-        <li>skills.name</li>
-      </ul>
-    </p>
-  </div><!-- /.col-lg-4 -->
-  <% end %>
-</div><!-- /.row -->
+  <div class="row">
+    <% @mentors.each do |m| %>
+    <div class="col-lg-4">
+      <%= image_tag m.photo, class: "img-circle", style: "width: 140px; height: 140px;" %>
+      <h2><%= link_to m.name, mentor_path(m) %></h2>
+      <p>
+        <% m.skills.each do |skill| %>
+        <%= skill.name %> &nbsp
+        <% end %>
+      </p>
+    </div><!-- /.col-lg-4 -->
+    <% end %>
+  </div><!-- /.row -->
+</div>
 
  <!-- Bootstrap core JavaScript =========================================== -->
   <!-- Placed at the end of the document so the pages load faster -->

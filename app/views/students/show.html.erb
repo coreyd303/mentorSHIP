@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="blog-header">
+    <h2 class="blog-title">Student Profile: <%= @student.name %></h2>
+  </div>
+  <br/>
+  <div class="student-row">
+    <div class="col-md-5 col-md-offset-1 blog-sidebar">
+      <div class="sidebar-module">
+        <img class="img-rounded" src="<%= @student.avatar.url(:thumb) %>"/>
+        <h4>Cohort: <%= @student.cohort %></h4>
+        <h4><%= @student.posse.name %> Posse</h4>
+        <br/>
+        <h5><%= @student.bio %></h5>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <h3>Here's a Rundown of Your Current Module</h3>
+      <p><%= @student.mod.name %>: <%= @student.mod.description %></p>
+      <p>High Level Ideas</p>
+      <p>Projects with Links</p>
+    </div>
+  </div>
+</div>
+<br/>

@@ -1,4 +1,5 @@
 class MentorsController < ApplicationController
+  before_action :set_mentor, only: [:show, :edit, :update]
 
   def index
     @mentors = Mentor.all
@@ -10,13 +11,14 @@ class MentorsController < ApplicationController
 
   def new
     @mentor = Mentor.new
+    @skills = Skill.all
   end
 
   def create
     @mentor = Mentor.new(mentor_params)
 
     if @mentor.save
-      @mentor.skills_list(params[:mentor][:skills])
+      @mentor.skills = Skill.where(id: params[:mentor][:skills].reject { |i| i == "" })
       flash[:success] = "Profile was successfully create"
       redirect_to mentor_path(@mentor)
     else
@@ -26,15 +28,13 @@ class MentorsController < ApplicationController
   end
 
   def edit
-    @mentor = Mentor.find(params[:id])
   end
 
   def update
-    @mentor = Mentor.find(params[:id])
     @mentor.update(mentor_params)
 
     if @mentor.update(mentor_params)
-      @mentor.skills_list(params[:mentor][:skills])
+      @mentor.skills = Skill.where(id: params[:mentor][:skills].reject { |i| i == "" })
       flash[:success] = "Profile was successfully updated"
       redirect_to mentor_path(@mentor)
     else
@@ -43,7 +43,15 @@ class MentorsController < ApplicationController
     end
   end
 
+  def search
+    @mentors = Mentor.find_matches(params[:query])
+  end
+
 private
+
+  def set_mentor
+    @mentor = Mentor.find(params[:id])
+  end
 
   def mentor_params
     params.require(:mentor).permit(:name,
@@ -51,10 +59,6 @@ private
                                    :company,
                                    :bio,
                                    :photo,
-                                   :skills_list)
-  end
-
-  def skills
-    @skills = Mentor.skills
+                                   :skills)
   end
 end
