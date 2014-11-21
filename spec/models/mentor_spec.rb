@@ -35,5 +35,4 @@ RSpec.describe Mentor, :type => :model do
   it 'is valid without skills on create' do
     expect(mentor).to be_valid
   end
-
 end
