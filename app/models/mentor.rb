@@ -4,6 +4,12 @@ class Mentor < ActiveRecord::Base
   has_many :mentor_skills
   has_many :skills, through: :mentor_skills
 
+  def self.find_matches(query)
+    query = query.downcase
+    where("lower(name) like ?", "%#{query}%")
+  end
+
+
   def skills_list(skill_list)
     if skill_list
       valid_skills = skill_list.reject do |skill|

@@ -43,6 +43,10 @@ class MentorsController < ApplicationController
     end
   end
 
+  def search
+    @mentors = Mentor.find_matches(params[:query])
+  end
+
 private
 
   def mentor_params
