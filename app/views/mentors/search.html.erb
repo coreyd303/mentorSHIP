@@ -1,0 +1,17 @@
+<h1>Mentors matching your search</h1>
+<br/>
+<div class="container marketing">
+  <div class="row">
+    <% @mentors.each do |m| %>
+    <div class="col-lg-4">
+      <%= image_tag m.photo, class: "img-circle", style: "width: 140px; height: 140px;" %>
+      <h2><%= link_to m.name, mentor_path(m) %></h2>
+      <p>
+        <% m.skills.each do |skill| %>
+        <%= skill.name %> &nbsp
+        <% end %>
+      </p>
+    </div><!-- /.col-lg-4 -->
+    <% end %>
+  </div><!-- /.row -->
+</div><!-- /.container marketing -->
