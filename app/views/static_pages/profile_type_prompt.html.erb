@@ -1,9 +1,9 @@
 <%= form_for @user do |f| %>
   <%= hidden_field_tag :profile_type, "mentor" %>
-  <%= f.submit "Mentor" %>
+  <%= f.submit "Mentor", class: "mentor-button" %>
 <% end %>
 
 <%= form_for @user do |f| %>
   <%= hidden_field_tag :profile_type, "student" %>
-  <%= f.submit "Student" %>
+  <%= f.submit "Student", class: "student-button" %>
 <% end %>
