@@ -1,5 +1,12 @@
 class Seed
 
+  5.times do |i|
+    Student.create!(name: Faker::Name.name,
+                    cohort: "1406",
+                    mod_id: rand(1..5),
+                    posse_id: rand(1..10))
+  end
+
   10.times do |i|
     Mentor.create!(name: Faker::Name.name,
                    email: Faker::Internet.email,
