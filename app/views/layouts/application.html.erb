@@ -16,8 +16,12 @@
 
   <body>
     <%= render partial: "shared/navbar" %>
+    <%= render partial: "shared/messages" %>
     <%= yield %>
-    <%= render partial: "shared/footer"%>
+ 
     <%= javascript_include_tag "application" %>
   </body>
+  <footer>
+   <%= render partial: "shared/footer"%>
+  </footer>
 </html>

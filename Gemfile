@@ -10,12 +10,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
+gem 'paperclip', '~> 4.2'
 gem 'bootstrap-sass'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
-
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
@@ -23,6 +22,7 @@ group :development, :test do
   gem 'faker'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'spring'
   gem 'sqlite3'
 end
 
