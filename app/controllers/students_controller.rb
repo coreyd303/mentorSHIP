@@ -19,6 +19,18 @@ class StudentsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @student.update(student_params)
+      flash.notice = 'Your profile was successfully updated!'
+      redirect_to student_path(@student)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def student_params
