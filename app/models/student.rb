@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
+  validates :name, :cohort, :mod_id, presence: true, on: :update
   belongs_to :mod
   belongs_to :posse
 
@@ -9,5 +10,6 @@ class Student < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { medium: "300x300>", thumb: "150x150"},
   :default_url => "turing.png"
+
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 end
