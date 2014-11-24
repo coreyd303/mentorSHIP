@@ -1,4 +1,12 @@
 class Seed
+
+  Student.create(name: "Bob Example",
+                 cohort: "1406",
+                 mod_id: 1)
+
+  Mentor.create(name: "Mr. Mentor",
+                email: "mentor@example.com")
+
   Skill.create(name: "Ruby")
   Skill.create(name: "Sinatra")
   Skill.create(name: "Rails")
