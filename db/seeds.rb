@@ -1,6 +1,6 @@
 class Seed
 
-  Student.create(name: "Bob Example",
+  Student.create(name: "Bob Student",
                  cohort: "1406",
                  mod_id: 1)
 
