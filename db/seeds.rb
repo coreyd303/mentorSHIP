@@ -2,7 +2,8 @@ class Seed
 
   Student.create(name: "Bob Student",
                  cohort: "1406",
-                 mod_id: 1)
+                 mod_id: 1,
+                 posse_id: 1)
 
   Mentor.create(name: "Mr. Mentor",
                 email: "mentor@example.com")
