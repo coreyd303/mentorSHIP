@@ -3,7 +3,7 @@
   <div class="mentor-row">
     <div class="col-md-5 col-md-offset-1 blog-sidebar">
       <div class="sidebar-module">
-        <%= image_tag @mentor.photo, class: "img-circle", style: "width: 200px; height: 200px; border-width: 2px; border-color: black;" %>
+        <%= image_tag @mentor.photo.url(:medium), class: "img-circle" %>
         <h4>Email: <%= @mentor.email %></h4>
         <h4>Employer: <%= @mentor.company %></h4>
         <h4>Best at: <% @mentor.skills.each do |skill| %>

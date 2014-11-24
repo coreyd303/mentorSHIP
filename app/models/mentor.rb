@@ -3,6 +3,8 @@ class Mentor < ActiveRecord::Base
   has_many :mentor_skills
   has_many :skills, through: :mentor_skills
 
+  has_attached_file :photo, :styles => { medium: "300x300>", thumb: "150x150"},
+  :default_url => "turing.png"
 
   def self.find_matches(query)
     query = query.downcase
