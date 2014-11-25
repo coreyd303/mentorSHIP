@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125220555) do
+ActiveRecord::Schema.define(version: 20141125223313) do
+
+  create_table "comments", force: true do |t|
+    t.integer "user_id"
+    t.integer "snippet_id"
+    t.string  "body"
+  end
 
   create_table "mentor_skills", force: true do |t|
     t.integer  "mentor_id"
