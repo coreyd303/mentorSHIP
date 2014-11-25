@@ -37,6 +37,26 @@ body {
   margin-top: 50px;
 }
 
+.student-button {
+  background-color: #333;
+  margin-top: 150px;
+  margin-left: 100px;
+  height: 200px;
+  width: 400px;
+  float: left;
+  border-color: white;
+}
+
+.mentor-button {
+  background-color: white;
+  color: black;
+  margin: 150px;
+  margin-right: 100px;
+  height: 200px;
+  width: 400px;
+  float: right;
+}
+
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;

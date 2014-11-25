@@ -18,7 +18,7 @@ class MentorsController < ApplicationController
     @mentor = Mentor.new(mentor_params)
 
     if @mentor.save
-      @mentor.skills = Skill.where(id: params[:mentor][:skills].reject { |i| i == "" })
+      add_mentor_skills
       flash[:success] = "Profile was successfully create"
       redirect_to mentor_path(@mentor)
     else
@@ -34,7 +34,7 @@ class MentorsController < ApplicationController
     @mentor.update(mentor_params)
 
     if @mentor.update(mentor_params)
-      @mentor.skills = Skill.where(id: params[:mentor][:skills].reject { |i| i == "" })
+      add_mentor_skills
       flash[:success] = "Profile was successfully updated"
       redirect_to mentor_path(@mentor)
     else
@@ -48,6 +48,11 @@ class MentorsController < ApplicationController
   end
 
 private
+
+  def add_mentor_skills
+    set_skills     = Skill.where(id: params[:mentor][:skills])
+    @mentor.skills = set_skills.reject(&:empty?)
+  end
 
   def set_mentor
     @mentor = Mentor.find(params[:id])

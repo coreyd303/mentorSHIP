@@ -7,18 +7,23 @@
       <ul>
         <li>
           <form action="/search" class="search">
-            <input type="text" name="query" placeholder="Search Mentors" class="search-text-box"> 
+            <input type="text" name="query" placeholder="Search Mentors" class="search-text-box">
           </form>
         </li>
         <li>&nbsp</li>
         <li><%= link_to "Home", root_path %></li>
-        <!-- if current user is_mentor -->
-        <li><%= link_to "Profile", "#"  %></li>
-        <li><%= link_to "Mentors", mentors_path %></li>
-        <!-- else -->
-        <!-- end -->
-        <li><%= link_to "Sign In", 'auth/github' %></li>
-        
+        <% if current_user %>
+          <% if current_user.mentor %>
+            <li><%= link_to "Students", students_path %></li>
+            <li><%= link_to "Profile", mentor_path(current_user.mentor)  %></li>
+          <% elsif current_user.student %>
+            <li><%= link_to "Mentors", mentors_path %></li>
+            <li><%= link_to "Profile", student_path(current_user.student) %></li>
+          <% end %>
+          <li><%= link_to "Sign Out", signout_path %></li>
+        <% else %>
+          <li><%= link_to "Sign In", '/auth/github/' %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

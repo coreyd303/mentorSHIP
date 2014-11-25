@@ -6,7 +6,7 @@
   <div class="student-row">
     <div class="col-md-5 col-md-offset-1 blog-sidebar">
       <div class="sidebar-module">
-        <img class="img-rounded" src="<%= @student.avatar.url(:thumb) %>"/>
+        <%= image_tag @student.avatar.url(:medium), class: "img-circle"
         <h4>Cohort: <%= @student.cohort %></h4>
         <h4><%= @student.posse.name %> Posse</h4>
         <br/>
@@ -21,4 +21,3 @@
     </div>
   </div>
 </div>
-<br/>

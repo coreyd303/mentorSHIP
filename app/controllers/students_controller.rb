@@ -17,6 +17,24 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @student = Student.find(params[:id]) 
+  end
+
+  def edit
+    @student = Student.find(params[:id])
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    @student.update(student_params)
+
+    if @student.update(student_params)
+      flash[:success] = "Profile was successfully updated"
+      redirect_to student_path(@student)
+    else
+      flash[:danger]  = "* = required fields"
+      render :edit
+    end
   end
 
   def edit

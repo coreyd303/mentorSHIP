@@ -24,9 +24,10 @@
 
       <div class="container marketing">
         <div class="row">
+          <% if @mentor %>
           <% @mentors.each do |m| %>
           <div class="col-lg-4">
-            <%= image_tag m.photo, class: "img-circle", style: "width: 150px; height: 150px;" %>
+            <%= image_tag m.photo.url(:thumb), class: "img-circle" %>
             <h2><%= link_to m.name, mentor_path(m) %></h2>
             <p>
               <% m.skills.each do |skill| %>
@@ -34,6 +35,7 @@
               <% end %>
             </p>
           </div><!-- /.col-lg-4 -->
+          <% end %>
           <% end %>
         </div><!-- /.row -->
       </div>
@@ -53,12 +55,14 @@
       <div class="container marketing">
         <div class="row">
           <div class="col-lg-6 col-lg-offset-3">
+            <% if @student %>
             <%= image_tag @student.avatar.url(:thumb), class: "img-circle" %>
             <h2><%= link_to @student.name, student_path(@student) %></h2>
             <p>
               Cohort: <%= @student.cohort %>&nbsp
               <%= @student.mod.name %>
             </p>
+            <% end %>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
       </div>
@@ -77,16 +81,15 @@
 
       <div class="container marketing">
         <div class="row">
-          <div class="col-lg-4">
-            <img src="https://pbs.twimg.com/media/B1z8XoCIUAAf5Yn.jpg" class="img-circle", style="width: 300px; height: 300px;">
-          </div><!-- /.col-lg-4 -->
-          <div>
+          <div class="col-lg-6 col-lg-offset-3">
+            <img src="https://pbs.twimg.com/media/B1z8XoCIUAAf5Yn.jpg" class="img-circle", style="width: 200px; height: 200px;">
             <p>Get Started Now!</p>
             <p><%= link_to "Login with GitHub", "auth/github", class: "btn btn-lg btn-default" %></p>
+          </div><!-- /.col-lg-4 -->
+            
         </div><!-- /.row -->
       </div>
     </div>
   </div>
 </div>
 </div>
-
