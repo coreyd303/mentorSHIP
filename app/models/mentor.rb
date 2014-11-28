@@ -11,6 +11,9 @@ class Mentor < ActiveRecord::Base
     where("lower(name) like ?", "%#{query}%")
   end
 
+  def self.contact_by
+    ["Text-Request Appointment"]
+  end
   # def skills(skill_list)
   #   if skill_list
   #     valid_skills = skill_list.reject do |skill|
