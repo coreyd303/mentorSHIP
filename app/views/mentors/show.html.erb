@@ -9,7 +9,11 @@
         <h4>Best at: <% @mentor.skills.each do |skill| %>
           <i><%= skill.name  %></i>&nbsp
           <% end %></p></h4>
-          <p><a class="btn btn-sm btn-info" href="#" role="button">Request appointment</a></p>
+
+        <p>
+          <%= link_to "Request Appointment", "#apptModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
+        </p>
+        <%= render "modals/appointment_modal" %>
       </div>
     </div>
     <div class="col-md-5">
@@ -18,3 +22,6 @@
     </div>
   </div>
 </div>
+
+
+<script>$('#myModal').modal(options)</script>

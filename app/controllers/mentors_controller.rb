@@ -6,7 +6,7 @@ class MentorsController < ApplicationController
   end
 
   def show
-    @mentor = Mentor.find(params[:id])
+    @appointment = Appointment.new
   end
 
   def new
@@ -51,7 +51,7 @@ private
 
   def add_mentor_skills
     set_skills     = Skill.where(id: params[:mentor][:skills])
-    @mentor.skills = set_skills.reject(&:empty?)
+    @mentor.skills = set_skills
   end
 
   def set_mentor

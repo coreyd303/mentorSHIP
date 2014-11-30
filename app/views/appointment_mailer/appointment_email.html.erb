@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @mentor.name %>,</h1>
+    <p>
+      <% if @student != nil %>
+        <%= @student.name%> would like to request an appointment with you.<br/>
+      <% else %>
+        A student would like an appointment with you.<br/>
+      <% end %>
+    </p>
+    <p>
+      <h3> Student Message: </h3>
+      <p> <%= @body %> </p>
+    </p>
+    <p>
+      <% if @student != nil %>
+        To view <%= @student.name %>'s profile visting <%= link_to "mentorShip", @url %>.
+      <% else %>
+        Just testing! <%= link_to "mentorShip", @url %>
+      <% end %>
+    </p>
+    <p>
+      <% if @studnet != nil %>
+        Please let <%= @student.name %> know if you are avaliable please email them at <%= @student.email %> 
+      <% else %>
+        ...............
+      <% end %>
+    </p>
+    <p> Thanks so much for all you do!<p>
+  </body>
+</html>

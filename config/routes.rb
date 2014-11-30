@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :skills
   resources :students
   resources :users, only: [:update]
+  resources :appointments, only: [:index, :create]
 end
