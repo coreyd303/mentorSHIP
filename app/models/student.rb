@@ -1,12 +1,12 @@
 class Student < ActiveRecord::Base
-  validates :name, :cohort, :mod_id, presence: true, on: :update
+  validates  :name,
+             :email,
+             :cohort, 
+             :mod_id, 
+             :posse_id, presence: true, on: :update
+
   belongs_to :mod
   belongs_to :posse
-
-  validates :name,     presence: true
-  validates :cohort,   presence: true
-  validates :mod_id,   presence: true
-  validates :posse_id, presence: true
 
   has_attached_file :avatar, :styles => { medium: "300x300>", thumb: "150x150"},
   :default_url => "turing.png"

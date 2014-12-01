@@ -1,0 +1,8 @@
+<% if @student.errors.any? %>
+<div id="error_explanation">
+  <h4><%= pluralize(@student.errors.count, "error") %> prohibited this profile from being saved:</h4>
+    <% @student.errors.full_messages.each do |message| %>
+    <%= message %>&nbsp
+    <% end %>
+</div>
+<% end %>

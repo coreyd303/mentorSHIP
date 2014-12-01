@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+
+  belongs_to :student
+  belongs_to :mentor
+
   def student
     Student.find(profile_id) if profile_type == 'student'
   end
