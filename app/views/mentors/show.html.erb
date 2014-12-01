@@ -9,12 +9,12 @@
         <h4>Best at: <% @mentor.skills.each do |skill| %>
           <i><%= skill.name  %></i>&nbsp
           <% end %></p></h4>
-          <p><%= render "shared/mentor_contact" %></p>
+          <p><a class="btn btn-sm btn-info" href="#" role="button">Request appointment</a></p>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <h2><%= @mentor.name %></h2>
+        <p><%= @mentor.bio %></p>
       </div>
     </div>
-    <div class="col-md-5">
-      <h2><%= @mentor.name %></h2>
-      <p><%= @mentor.bio %></p>
-    </div>
   </div>
-</div>
