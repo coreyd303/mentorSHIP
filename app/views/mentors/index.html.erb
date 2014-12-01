@@ -1,3 +1,4 @@
+
  <!-- Carousel ================================================== -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -46,6 +47,21 @@
 </div><!-- /.carousel -->
 
 <div class="container marketing">
+  <h4>Filter Mentors by Skills</h4>
+  <div class="btn-toolbar" role="toolbar" aria-label="...">
+    <div class="btn-group" role="group" aria-label="...">
+      <% @skills.each do |s| %>
+        <%= link_to s.name, mentors_path(filter: s.name), class: "btn btn-primary" %>
+      <% end %>
+    </div
+    <div class="btn-group" role="group" aria-label="...">
+      <%= link_to "All Mentors", mentors_path, class: "btn btn-primary" %>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
   <div class="row">
     <% @mentors.each do |m| %>
     <div class="col-lg-4">

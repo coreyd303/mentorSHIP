@@ -4,7 +4,12 @@ class MentorsController < ApplicationController
   before_action :profile_checker
 
   def index
-    @mentors = Mentor.all
+    @mentors = Mentor.includes(:skills)
+    @skills  = Skill.all
+
+    if params[:filter]
+      @mentors = @mentors.find_all { |m| m.skills.collect { |s| s.name }.include?(params[:filter]) }
+    end
   end
 
   def show
@@ -49,6 +54,7 @@ class MentorsController < ApplicationController
     @mentors = Mentor.find_matches(params[:query])
   end
 
+
 private
 
   def add_mentor_skills
@@ -63,7 +69,6 @@ private
   def set_student
     @student = Student.find(params[:id])
   end
-
 
   def mentor_params
     params.require(:mentor).permit(:name,
