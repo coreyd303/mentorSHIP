@@ -18,3 +18,8 @@
 @import "bootstrap";
 @import "mentors";
 @import "static_pages";
+
+.btn-toolbar .btn-group,
+.btn-toolbar .input-group {
+  float: none;
+}

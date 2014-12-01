@@ -2,7 +2,12 @@ class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update]
 
   def index
-    @mentors = Mentor.all
+    @mentors = Mentor.includes(:skills)
+    @skills  = Skill.all
+
+    if params[:filter]
+      @mentors = @mentors.find_all { |m| m.skills.collect { |s| s.name }.include?(params[:filter]) }
+    end
   end
 
   def show
