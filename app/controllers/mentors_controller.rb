@@ -54,6 +54,7 @@ class MentorsController < ApplicationController
     @mentors = Mentor.find_matches(params[:query])
   end
 
+
 private
 
   def add_mentor_skills
@@ -85,5 +86,3 @@ private
     end
   end
 end
-
-
