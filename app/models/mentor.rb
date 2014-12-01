@@ -1,4 +1,7 @@
+
+
 class Mentor < ActiveRecord::Base
+
   validates :name, :email, presence: :true, on: :update
   has_many :mentor_skills
   has_many :skills, through: :mentor_skills
@@ -12,8 +15,22 @@ class Mentor < ActiveRecord::Base
   end
 
   def self.contact_by
-    ["Text-Request Appointment"]
+    ["Text-Request Appointment","Email-Request Appointment"]
   end
+
+  def self.send_text_message
+    twilio_sid   = ENV["twilio_account_sid"]
+    twilio_token = ENV["twilio_account_token"]
+
+    @twilio_client = Twilio::REST::Client.new(twilio_sid, twilio_token)
+
+    @twilio_client.account.sms.messages.create(
+      :from => "+16572206498",
+      :to   => "+17144012809",
+      :body => "Hey there"
+    )
+  end
+
   # def skills(skill_list)
   #   if skill_list
   #     valid_skills = skill_list.reject do |skill|
