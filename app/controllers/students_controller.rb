@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  
   def new
     @student = Student.new
   end
@@ -32,6 +33,18 @@ class StudentsController < ApplicationController
       redirect_to student_path(@student)
     else
       flash[:danger]  = "* = required fields"
+      render :edit
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @student.update(student_params)
+      flash.notice = 'Your profile was successfully updated!'
+      redirect_to student_path(@student)
+    else
       render :edit
     end
   end

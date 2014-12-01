@@ -127,4 +127,51 @@ RSpec.describe StudentsController, type: :controller do
       expect(response).to render_template('show')
     end
   end
+
+  describe "edit" do
+    it "assigns the requested student to @student" do
+      user = student
+      get :edit, id: student
+
+      expect(user).to eq(student)
+    end
+
+    it "renders the edit view" do
+      get :edit, id: student
+
+      expect(response).to render_template('edit')
+    end
+  end
+
+  describe "update" do
+    describe "with valid attributes" do
+      it "changes student's attributes" do
+        put :update, id: student, student: { name: "James Potter" }
+        student.reload
+
+        expect(student.name).to eq("James Potter")
+      end
+
+      it "redirects to the updated contact" do
+        put :update, id: student, student: { name: "James Potter" }
+
+        expect(response).to redirect_to(student)
+      end
+    end
+
+    describe "with invalid attributes" do
+      it "does not change student's attributes" do
+        put :update, id: student, student: { cohort: nil }
+        student.reload
+
+        expect(student.cohort).to eq("1406")
+      end
+
+      it "re-renders the edit template" do
+        put :update, id: student, student: { cohort: nil }
+
+        expect(response).to render_template('edit')
+      end
+    end
+  end
 end

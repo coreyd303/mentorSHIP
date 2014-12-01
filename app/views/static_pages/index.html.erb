@@ -2,8 +2,10 @@
   <div class="site-wrapper-inner">
     <div class="cover-container">
       <div class="inner cover">
-        <p class="home-logo lead"><img src="http://www.clipartbest.com/cliparts/eiM/dgG/eiMdgGodT.png"></p>
-          <p><h1>Place holder Logo for mentorSHIP</h1></p>
+        <p class="home-logo lead">
+          <img src="http://www.clipartbest.com/cliparts/eiM/dgG/eiMdgGodT.png">
+          <h1>Place holder Logo for mentorSHIP</h1>
+        </p>
           <%= link_to "Login with GitHub", "auth/github", class: "btn btn-lg btn-default" %>
         </p>
       </div>
@@ -22,16 +24,18 @@
 
       <div class="container marketing">
         <div class="row">
+          <% if @mentor %>
           <% @mentors.each do |m| %>
           <div class="col-lg-4">
-            <%= image_tag m.photo, class: "img-circle", style: "width: 140px; height: 140px;" %>
+            <%= image_tag m.photo.url(:thumb), class: "img-circle" %>
             <h2><%= link_to m.name, mentor_path(m) %></h2>
-            <p>skills:
-              <ul>
-                <li>skills.name</li>
-              </ul>
+            <p>
+              <% m.skills.each do |skill| %>
+              <%= skill.name %> &nbsp
+              <% end %>
             </p>
           </div><!-- /.col-lg-4 -->
+          <% end %>
           <% end %>
         </div><!-- /.row -->
       </div>
@@ -50,13 +54,14 @@
 
       <div class="container marketing">
         <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <img src="https://robohash.org/i" class="img-circle", style="width: 250px; height: 250px;">
-            <h2>@student.name(link)</h2>
+          <div class="col-lg-6 col-lg-offset-3">
+            <% if @student %>
+            <%= image_tag @student.avatar.url(:thumb), class: "img-circle" %>
+            <h2><%= link_to @student.name, student_path(@student) %></h2>
             <p>
-                <li>@student.cohort</li>
-                <li>@student.module</li>
+              Cohort: <%= @student.cohort %>&nbsp
             </p>
+            <% end %>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
       </div>
@@ -75,12 +80,15 @@
 
       <div class="container marketing">
         <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <img src="http://mentoring.curtin.edu.au/local/images/landing_picture.jpg" class="img-circle", style="width: 250px; height: 250px;">
+          <div class="col-lg-6 col-lg-offset-3">
+            <img src="https://pbs.twimg.com/media/B1z8XoCIUAAf5Yn.jpg" class="img-circle", style="width: 200px; height: 200px;">
+            <p>Get Started Now!</p>
+            <p><%= link_to "Login with GitHub", "auth/github", class: "btn btn-lg btn-default" %></p>
           </div><!-- /.col-lg-4 -->
+            
         </div><!-- /.row -->
       </div>
     </div>
   </div>
 </div>
-
+</div>

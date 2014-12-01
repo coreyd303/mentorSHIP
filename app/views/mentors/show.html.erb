@@ -1,20 +1,20 @@
 <div class="container">
-  <div class="jumbotron">
-    <h1><%= @mentor.name %></h1>
-    <p class="lead"><%= image_tag @mentor.photo, class: "img-circle", style: "width: 300px; height: 300px; border-width: 2px; border-color: black;" %></p>
-    <p><a class="btn btn-lg btn-success" href="#" role="button">Request appointment</a></p>
-  </div>
-
-  <div>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <p><b>Email:</b> <%= @mentor.email %></p>
-        <p><b>Employer:</b> <%= @mentor.company %></p>
-        <p><b>Best at:</b><% @mentor.skills.each do |skill| %>
-          <i><%= skill.name  %><i>&nbsp
-          <% end %></p>
-        <p><b>About:</b> <%= @mentor.bio %></p>
+  <br/>
+  <div class="mentor-row">
+    <div class="col-md-5 col-md-offset-1 blog-sidebar">
+      <div class="sidebar-module">
+        <%= image_tag @mentor.photo.url(:medium), class: "img-circle" %>
+        <h4>Email: <%= @mentor.email %></h4>
+        <h4>Employer: <%= @mentor.company %></h4>
+        <h4>Best at: <% @mentor.skills.each do |skill| %>
+          <i><%= skill.name  %></i>&nbsp
+          <% end %></p></h4>
+          <p><a class="btn btn-sm btn-info" href="#" role="button">Request appointment</a></p>
       </div>
+    </div>
+    <div class="col-md-5">
+      <h2><%= @mentor.name %></h2>
+      <p><%= @mentor.bio %></p>
     </div>
   </div>
 </div>
