@@ -1,3 +1,4 @@
+
  <!-- Carousel ================================================== -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -8,32 +9,29 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+      <%= image_tag("turing1.jpg") %>
       <div class="container">
         <div class="carousel-caption">
           <h1>Learn about Mentors</h1>
           <p>Take the time to get to know who the Turing Mentors are. Find out their specialities, and where they are coming from</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">not sure if needed</a></p>
         </div>
       </div>
     </div>
     <div class="item">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAGZmZgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+      <%= image_tag("turing2.jpg") %>
       <div class="container">
         <div class="carousel-caption">
           <h1>Build relationships that benefit your learning</h1>
           <p>You get to pick who you work with, based on your needs, your interests, and your schedule!</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">not sure if your needed</a></p>
         </div>
       </div>
     </div>
     <div class="item">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAFVVVQAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+      <%= image_tag("turing3.jpg") %>
       <div class="container">
         <div class="carousel-caption">
           <h1>Streamline appointments.</h1>
           <p>Take out the guess work! MentorSHIP makes it easy to know what to pair on, when mentors are avaliable, and how to get in touch from day one.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">not sure if needed</a></p>
         </div>
       </div>
     </div>
@@ -49,6 +47,21 @@
 </div><!-- /.carousel -->
 
 <div class="container marketing">
+  <h4>Filter Mentors by Skills</h4>
+  <div class="btn-toolbar" role="toolbar" aria-label="...">
+    <div class="btn-group" role="group" aria-label="...">
+      <% @skills.each do |s| %>
+        <%= link_to s.name, mentors_path(filter: s.name), class: "btn btn-primary" %>
+      <% end %>
+    </div
+    <div class="btn-group" role="group" aria-label="...">
+      <%= link_to "All Mentors", mentors_path, class: "btn btn-primary" %>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
   <div class="row">
     <% @mentors.each do |m| %>
     <div class="col-lg-4">

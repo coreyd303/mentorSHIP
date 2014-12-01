@@ -5,6 +5,10 @@ before_action :get_student, only: [:index]
   def index
   end
 
+  def profile_type_prompt
+    @user = current_user
+  end
+
 private
 
   def get_mentors
@@ -13,9 +17,5 @@ private
 
   def get_student
     @student = Student.all.sample(3).pop
-  end
-
-  def profile_type_prompt
-    @user = current_user
   end
 end
