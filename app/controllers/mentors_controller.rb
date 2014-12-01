@@ -1,5 +1,7 @@
 class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update]
+  before_action :set_student, only: [:show]
+  before_action :profile_checker
 
   def index
     @mentors = Mentor.all
@@ -58,6 +60,11 @@ private
     @mentor = Mentor.find(params[:id])
   end
 
+  def set_student
+    @student = Student.find(params[:id])
+  end
+
+
   def mentor_params
     params.require(:mentor).permit(:name,
                                    :email,
@@ -65,5 +72,12 @@ private
                                    :bio,
                                    :photo,
                                    :skills)
+  end
+
+  def profile_checker
+    if current_user.profile_type == nil
+      redirect_to profile_type_prompt_path
+      flash[:danger] = "You must select a profile type to continue"
+    end
   end
 end

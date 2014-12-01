@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :profile_checker
   
   def new
     @student = Student.new
@@ -53,6 +54,7 @@ class StudentsController < ApplicationController
 
   def student_params
     params.require(:student).permit(:name,
+                                    :email,
                                     :bio,
                                     :cohort,
                                     :mod_id,
@@ -62,5 +64,12 @@ class StudentsController < ApplicationController
 
   def set_student
     @student = Student.find(params[:id])
+  end
+
+  def profile_checker
+    if current_user.profile_type == nil
+      redirect_to profile_type_prompt_path
+      flash[:notice] = "You must select a profile type to continue"
+    end
   end
 end

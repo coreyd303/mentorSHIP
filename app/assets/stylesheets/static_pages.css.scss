@@ -37,23 +37,20 @@ body {
 }
 
 .student-button {
-  background-color: #333;
-  margin-top: 150px;
-  margin-left: 100px;
-  height: 200px;
-  width: 400px;
-  float: left;
-  border-color: white;
+  background-color: #3399FF;
+  color: black;
+  height: 150px;
+  width: 350px;
+  border-radius: 15px;
 }
 
 .mentor-button {
   background-color: white;
   color: black;
-  margin: 150px;
-  margin-right: 100px;
-  height: 200px;
-  width: 400px;
-  float: right;
+  height: 150px;
+  width: 350px; 
+  border-radius: 15px;
+  
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */

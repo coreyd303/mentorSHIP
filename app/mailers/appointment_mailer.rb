@@ -1,5 +1,5 @@
 class AppointmentMailer < ActionMailer::Base
-  default from: "someone@mentorship.com"
+  default from: "MentorShip"
 
   def appointment_email(mentor, student, subject, body)
     @mentor  = mentor

@@ -8,16 +8,15 @@
       </div>
 
       <div class="modal-body">
-        To: <%= @mentor.name %><br/>
-        From: 
-          <% if current_user %>
-            <%= current_user.name %>
-          <% end %><br/><br/>
         <%= form_for(resource, as: resource_name) do |f| %>
+          <div class='form-group'>
+            To: <%= @mentor.name %>
+            From: <%= current_user.student.name %>
+          </div>
           <div class="form-group">
             <%= f.text_field :subject, class: "form-control", placeholder: "Subject" %>
             <%= f.hidden_field :mentor, value: @mentor.id %>
-            <%= f.hidden_field :student, value: current_user %>
+            <%= f.hidden_field :student, value: current_user.student.id %>
           </div>
           <div class="form-group">
             <%= f.text_area :body, class: "form-control", placeholder: "Message" %>

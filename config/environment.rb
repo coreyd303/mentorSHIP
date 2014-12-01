@@ -7,11 +7,20 @@ Rails.application.initialize!
 ActionMailer::Base.delivery_method = :smtp
 
 ActionMailer::Base.smtp_settings = {
-  :user_name            => "coreyd303",
+  :user_name            => 'alanbsmith',
   :password             => Figaro.env.sendgrid_password,
   :domain               => 'localhost.com',
   :address              => 'smtp.sendgrid.net',
   :port                 => 587,
   :authentication       => :plain,
   :enable_starttls_auto => true
+
+
+  # :user_name            => "coreyd303",
+  # :password             => Figaro.env.sendgrid_password,
+  # :domain               => 'localhost.com',
+  # :address              => 'smtp.sendgrid.net',
+  # :port                 => 587,
+  # :authentication       => :plain,
+  # :enable_starttls_auto => true
 }
