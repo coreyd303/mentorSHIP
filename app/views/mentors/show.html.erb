@@ -11,9 +11,13 @@
           <% end %></p></h4>
 
         <p>
-          <%= link_to "Request Appointment", "#apptModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
+          <% if @mentor.preference == "email" %>
+            <%= link_to "Reach out to #{@mentor.name}", "#emailModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
+          <% else @mentor.preference == "sms" %>
+            <%= link_to "Reach out to #{@mentor.name}", "#smsModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
+          <% end %>
         </p>
-        <%= render "modals/appointment_modal" %>
+        <%= render "modals/email_appointment_modal" %>
       </div>
     </div>
     <div class="col-md-5">
@@ -22,6 +26,3 @@
     </div>
   </div>
 </div>
-
-
-<script>$('#myModal').modal(options)</script>
