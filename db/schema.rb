@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20141202001339) do
   end
 
   create_table "students", force: true do |t|
+    t.string   "email"
     t.string   "name"
     t.text     "bio"
     t.string   "cohort"

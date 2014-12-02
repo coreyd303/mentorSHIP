@@ -12,9 +12,9 @@ class Seed
   Skill.create(name: "EmberJS")
   Skill.create(name: "VPS")
 
-  Student.create(name: "Bob Student",
-                 cohort: "1406",
-                 mod_id: 1,
+  Student.create(name:     "Bob Student",
+                 cohort:   "1406",
+                 mod_id:   1,
                  posse_id: 1)
 
   10.times do |i|
@@ -100,7 +100,7 @@ class Seed
                  description: "In this project you’ll practice building a system of several interacting Ruby objects using TDD.",
                  mod_id: 1)
   Project.create(name: "Ideabox Web", url: "http://tutorials.jumpstartlab.com/projects/idea_box.html#extensions",
-                 descripton: "Let’s build a system to record your good, bad, and awful ideas.",
+                 description: "Let’s build a system to record your good, bad, and awful ideas.",
                  mod_id: 2)
   Project.create(name: "Clone Wars", url: "http://tutorials.jumpstartlab.com/projects/clone_wars.html",
                  description: "In this project you’ll take a client’s website and rebuild it as a Sinatra and SQL-database powered web application.",
