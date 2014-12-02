@@ -16,6 +16,7 @@ gem 'omniauth-github'
 gem 'figaro'
 gem 'therubyracer'
 gem 'twilio-ruby'
+gem 'jquery-turbolinks'
 gem 'dalli'
 
 group :development, :test do

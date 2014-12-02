@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20141202220827) do
   create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "url"
-    t.string   "description"
+    t.text     "description"
     t.integer  "mod_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,23 +1,34 @@
 <div class="container">
   <div class="blog-header">
     <h2 class="blog-title">Student Profile: <%= @student.name %></h2>
+    <% if current_user %>
+      <center><%= link_to "Update Your Profile", edit_student_path(current_user.student), class: "btn-sm btn-info" %></center>
+    <% end %>
   </div>
   <br/>
   <div class="student-row">
-    <div class="col-md-5 col-md-offset-1 blog-sidebar">
+    <div class="col-md-2 col-md-offset-1 blog-sidebar">
       <div class="sidebar-module">
         <%= image_tag @student.avatar.url(:medium), class: "img-circle" %>
-        <h4>Cohort: <%= @student.cohort %></h4>
-        <h4><%= @student.posse.name %> Posse</h4>
+        <ul>
+          <li><h5>Cohort: <%= @student.cohort %></h5></li>
+          <li><h5><%= @student.mod.name %></h5></li>
+          <li><h5><%= @student.posse.name %> Posse</h5></li>
+        </ul>
         <br/>
         <h5><%= @student.bio %></h5>
       </div>
     </div>
-    <div class="col-md-5">
-      <h3>Here's a Rundown of Your Current Module</h3>
-      <p><%= @student.mod.name %>: <%= @student.mod.description %></p>
-      <p>High Level Ideas</p>
-      <p>Projects with Links</p>
+    <div class="col-md-9">
+      <center><h3>Here's a Rundown of Your Current Module</h3></center>
+      <center><h4><%= @student.mod.name %>: <%= @student.mod.description %></h4></center>
+      <% @projects.each do |p| %>
+        <h3><%= p.name %></h3>
+        <p>Description: <%= p.description %></p>
+        <p>Link to Project Spec: <%= link_to "#{p.url}", p.url  %></p>
+      <% end %>
+      <br/>
+      <br/>
     </div>
   </div>
 </div>

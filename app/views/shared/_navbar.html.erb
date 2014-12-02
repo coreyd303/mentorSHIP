@@ -18,7 +18,7 @@
             <li><%= link_to "Profile", mentor_path(current_user.mentor)  %></li>
           <% elsif current_user.student %>
             <li><%= link_to "Mentors", mentors_path %></li>
-            <li><%= link_to "Profile", student_path(current_user.student) %></li>
+            <li><%= link_to "Your Profile", student_path(current_user.student) %></li>
           <% end %>
           <li><%= link_to "Sign Out", signout_path %></li>
         <% else %>
