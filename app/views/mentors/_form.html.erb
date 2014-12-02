@@ -29,11 +29,10 @@
       <div class="col-md-6 col-md-offset-3">
         <%= f.label "Contact Preference(s) *" %>
         <br/>
-        <%= f.check_box :contact_preference, value: "email" %>
-        <%= f.label "Email" %>
-        &nbsp&nbsp&nbsp
-        <%= f.check_box :contact_preference, value: "SMS" %>
-        <%= f.label "SMS" %>
+        <%= f.collection_check_boxes(:preferences, Preference.all, :id, :name) do |b| %>
+          <%= b.check_box %>
+          <%= b.label(class: "check-box") %>&nbsp&nbsp
+        <% end %>
       </div>
     </div>
 

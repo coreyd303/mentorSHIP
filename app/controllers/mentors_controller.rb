@@ -13,8 +13,9 @@ class MentorsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.new
-    @notification = Notification.new
+    @appointment         = Appointment.new
+    @notification        = Notification.new
+    @contact_preferences = find_preferences
   end
 
   def new
@@ -68,7 +69,9 @@ private
   end
 
   def set_student
-    @student = Student.find(params[:id])
+    if current_user.profile_type == "student"
+      @student = Student.find(params[:id])
+    end
   end
 
   def mentor_params
@@ -79,7 +82,7 @@ private
                                    :photo,
                                    :skills,
                                    :phone_number,
-                                   :contact_preference)
+                                   :preferences)
   end
 
   def profile_checker
@@ -87,5 +90,9 @@ private
       redirect_to profile_type_prompt_path
       flash[:danger] = "You must select a profile type to continue"
     end
+  end
+
+  def find_preferences
+    @mentor.preferences.collect {|p| p.name }
   end
 end

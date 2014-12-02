@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128222912) do
+ActiveRecord::Schema.define(version: 20141202220827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,13 @@ ActiveRecord::Schema.define(version: 20141128222912) do
     t.string   "email"
     t.string   "company"
     t.text     "bio"
-    t.string   "contact_preference"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
     t.string   "phone_number"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.string   "photo_file_size"
   end
 
   create_table "mods", force: true do |t|
@@ -48,6 +50,13 @@ ActiveRecord::Schema.define(version: 20141128222912) do
 
   create_table "posses", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "preferences", force: true do |t|
+    t.string   "name"
+    t.integer  "mentor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

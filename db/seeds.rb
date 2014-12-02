@@ -2,7 +2,6 @@ class Seed
 
   Mentor.create(name: "Mr. Mentor",
                 email: "coreyd303@gmail.com",
-                contact_preference: "sms",
                 phone_number: "303-249-6458")
 
   Student.create(name: "Bob Student",
@@ -82,6 +81,10 @@ class Seed
   Mod.create(number: 3, name: "Module Three", description: "Professional Web Applications")
   Mod.create(number: 4, name: "Module Four",  description: "High-Performance Applications with APIs and Services")
   Mod.create(number: 5, name: "Graduated",    description: "Alumni")
+
+  Preference.create(name: "sms")
+  Preference.create(name: "email")
+
 end
 
 Seed.new

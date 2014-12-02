@@ -1,14 +1,14 @@
 <div class="jumbotron">
   <div class="row">
   <p><h3>What type of user are you?</h3></p>
-    <div class="col-lg-4  col-lg-offset-6">
+    <div class="col-lg-4  col-lg-offset-4">
       <%= form_for @user do |f| %>
-        <%= hidden_field_tag :profile_type, "student" %>
+        <%= hidden_field_tag :profile_type, "students" %>
         <h4><%= f.submit "I'm a Student", class: "btn btn-lg btn-info" %></h4>
       <% end %>
 
       <%= form_for @user do |f| %>
-        <%= hidden_field_tag :profile_type, "mentor" %>
+        <%= hidden_field_tag :profile_type, "mentors" %>
         <h4><%= f.submit "I'm a Mentor", class: "btn btn-lg btn-warning" %>
       <% end %>
     </div>

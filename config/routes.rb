@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   post 'notifications/notify',    to: 'notifications#notify'
 
+  resources :preferences
   resources :mentors
   resources :skills
   resources :students
