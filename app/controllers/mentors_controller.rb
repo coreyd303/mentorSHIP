@@ -1,7 +1,7 @@
 class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update]
   before_action :set_student, only: [:show]
-  before_action :profile_checker
+  before_action :user_checker
 
   def index
     @mentors = Mentor.includes(:skills)
@@ -77,6 +77,15 @@ private
                                    :bio,
                                    :photo,
                                    :skills)
+  end
+
+  def user_checker
+    if current_user == nil
+      flash[:danger] = "You must be signed in to do that"
+      redirect_to "/"
+    else
+      profile_checker
+    end
   end
 
   def profile_checker

@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141202001339) do
   create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "url"
-    t.string   "description"
+    t.text     "description"
     t.integer  "mod_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20141202001339) do
   end
 
   create_table "students", force: true do |t|
+    t.string   "email"
     t.string   "name"
     t.text     "bio"
     t.string   "cohort"
