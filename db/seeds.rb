@@ -1,16 +1,9 @@
 class Seed
 
   Mentor.create(name: "Mr. Mentor",
-                email: "coreyd303@gmail.com")
-
-  Skill.create(name: "Ruby")
-  Skill.create(name: "Sinatra")
-  Skill.create(name: "Rails")
-  Skill.create(name: "HTML/CSS")
-  Skill.create(name: "Bootstrap")
-  Skill.create(name: "Javascript")
-  Skill.create(name: "EmberJS")
-  Skill.create(name: "VPS")
+                email: "coreyd303@gmail.com",
+                contact_preference: "sms",
+                phone_number: "303-249-6458")
 
   Student.create(name: "Bob Student",
                  cohort: "1406",

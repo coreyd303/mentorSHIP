@@ -14,6 +14,7 @@ class MentorsController < ApplicationController
 
   def show
     @appointment = Appointment.new
+    @notification = Notification.new
   end
 
   def new
@@ -76,7 +77,9 @@ private
                                    :company,
                                    :bio,
                                    :photo,
-                                   :skills)
+                                   :skills,
+                                   :phone_number,
+                                   :contact_preference)
   end
 
   def profile_checker

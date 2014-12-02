@@ -14,9 +14,9 @@
         <h2><%= @mentor.name %></h2>
         <p><%= @mentor.bio %></p>
         <p>
-          <% if @mentor.preference == "email" %>
+          <% if @mentor.contact_preference == "email" %>
             <%= link_to "Reach out to #{@mentor.name}", "#emailModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
-          <% else @mentor.preference == "sms" %>
+          <% else @mentor.contact_preference == "sms" %>
             <%= link_to "Reach out to #{@mentor.name}", "#smsModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
           <% end %>
         </p>

@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 20141128222912) do
     t.string   "email"
     t.string   "company"
     t.text     "bio"
+    t.string   "contact_preference"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
-    t.integer  "phone_number"
+    t.string   "phone_number"
   end
 
   create_table "mods", force: true do |t|
