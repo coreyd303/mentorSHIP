@@ -16,6 +16,7 @@ gem 'omniauth-github'
 gem 'figaro'
 gem 'therubyracer'
 gem 'twilio-ruby'
+gem 'dalli'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'

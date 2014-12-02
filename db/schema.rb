@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20141202220827) do
     t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo"
     t.string   "phone_number"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -57,6 +56,15 @@ ActiveRecord::Schema.define(version: 20141202220827) do
   create_table "preferences", force: true do |t|
     t.string   "name"
     t.integer  "mentor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "description"
+    t.integer  "mod_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
