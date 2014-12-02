@@ -15,10 +15,6 @@ class Mentor < ActiveRecord::Base
     where("lower(name) like ?", "%#{query}%")
   end
 
-  def self.contact_by
-    ["Text-Request Appointment","Email-Request Appointment"]
-  end
-
   def self.send_text_message
     twilio_sid   = ENV["twilio_account_sid"]
     twilio_token = ENV["twilio_account_token"]
