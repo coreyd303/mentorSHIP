@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student,  only: [:show, :edit, :update, :destroy]
+  before_action :user_checker, only: [:show]
   before_action :profile_checker
 
   def new
@@ -51,10 +52,19 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
   end
 
+  def user_checker
+    if current_user == nil
+      flash[:danger] = "You must be signed in to view student profiles"
+      redirect_to "/"
+    else
+      profile_checker
+    end
+  end
+
   def profile_checker
     if current_user.profile_type == nil
       redirect_to profile_type_prompt_path
-      flash[:notice] = "You must select a profile type to continue"
+      flash[:danger] = "You must select a profile type to continue"
     end
   end
 end
