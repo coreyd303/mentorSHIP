@@ -18,3 +18,16 @@
 @import "bootstrap";
 @import "mentors";
 @import "static_pages";
+
+.modal-body {
+  color: #293D3D;
+}
+
+.modal-header {
+  color: #293D3D;
+}
+
+.btn-toolbar .btn-group,
+.btn-toolbar .input-group {
+  float: none;
+}

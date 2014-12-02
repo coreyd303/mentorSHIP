@@ -1,12 +1,19 @@
 class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update]
+  before_action :set_student, only: [:show]
+  before_action :profile_checker
 
   def index
-    @mentors = Mentor.all
+    @mentors = Mentor.includes(:skills)
+    @skills  = Skill.all
+
+    if params[:filter]
+      @mentors = @mentors.find_all { |m| m.skills.collect { |s| s.name }.include?(params[:filter]) }
+    end
   end
 
   def show
-    @mentor = Mentor.find(params[:id])
+    @appointment = Appointment.new
   end
 
   def new
@@ -47,15 +54,20 @@ class MentorsController < ApplicationController
     @mentors = Mentor.find_matches(params[:query])
   end
 
+
 private
 
   def add_mentor_skills
     set_skills     = Skill.where(id: params[:mentor][:skills])
-    @mentor.skills = set_skills.reject(&:empty?)
+    @mentor.skills = set_skills
   end
 
   def set_mentor
     @mentor = Mentor.find(params[:id])
+  end
+
+  def set_student
+    @student = Student.find(params[:id])
   end
 
   def mentor_params
@@ -65,5 +77,12 @@ private
                                    :bio,
                                    :photo,
                                    :skills)
+  end
+
+  def profile_checker
+    if current_user.profile_type == nil
+      redirect_to profile_type_prompt_path
+      flash[:danger] = "You must select a profile type to continue"
+    end
   end
 end

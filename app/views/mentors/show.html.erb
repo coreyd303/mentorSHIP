@@ -8,13 +8,19 @@
         <h4>Employer: <%= @mentor.company %></h4>
         <h4>Best at: <% @mentor.skills.each do |skill| %>
           <i><%= skill.name  %></i>&nbsp
-          <% end %></p></h4>
-          <p><a class="btn btn-sm btn-info" href="#" role="button">Request appointment</a></p>
+          <% end %></h4>
       </div>
-    </div>
-    <div class="col-md-5">
-      <h2><%= @mentor.name %></h2>
-      <p><%= @mentor.bio %></p>
+      <div class="col-md-5">
+        <h2><%= @mentor.name %></h2>
+        <p><%= @mentor.bio %></p>
+        <p>
+          <%= link_to "Request Appointment", "#apptModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
+        </p>
+        <%= render "modals/appointment_modal" %>
+      </div>
     </div>
   </div>
 </div>
+
+
+<script>$('#myModal').modal(options)</script>
