@@ -1,7 +1,8 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
-  before_action :user_checker
-  
+  before_action :set_student,  only: [:show, :edit, :update, :destroy]
+  before_action :user_checker, only: [:show]
+  before_action :profile_checker
+
   def new
     @student = Student.new
   end
@@ -18,24 +19,8 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id]) 
-  end
-
-  def edit
-    @student = Student.find(params[:id])
-  end
-
-  def update
-    @student = Student.find(params[:id])
-    @student.update(student_params)
-
-    if @student.update(student_params)
-      flash[:success] = "Profile was successfully updated"
-      redirect_to student_path(@student)
-    else
-      flash[:danger]  = "* = required fields"
-      render :edit
-    end
+    @module   = @student.mod
+    @projects = @module.projects
   end
 
   def edit
@@ -46,6 +31,7 @@ class StudentsController < ApplicationController
       flash.notice = 'Your profile was successfully updated!'
       redirect_to student_path(@student)
     else
+      flash[:danger]  = "* = required fields"
       render :edit
     end
   end

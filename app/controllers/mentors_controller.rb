@@ -1,7 +1,7 @@
 class MentorsController < ApplicationController
-  before_action :set_mentor, only: [:show, :edit, :update]
-  before_action :set_student, only: [:show]
-  before_action :user_checker
+  before_action :set_mentor,   only: [:show, :edit, :update]
+  before_action :set_student,  only: [:show]
+  before_action :user_checker, only: [:show]
 
   def index
     @mentors = Mentor.includes(:skills)
