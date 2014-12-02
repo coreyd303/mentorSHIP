@@ -1,0 +1,24 @@
+<div class="modal fade" id="smsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Send an SMS to <%= @mentor.name %></h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for @notification, url: notifications_notify_path do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :number, value: @mentor.phone_number %>
+          <%= f.hidden_field :student, value: current_user.student.name %>
+          <%= f.text_area :body, class: "form-control", placeholder: "Message, don't forget to include your ph# if you want a text back" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Send", class: "btn btn-sm btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

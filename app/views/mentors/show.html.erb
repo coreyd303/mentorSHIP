@@ -1,26 +1,40 @@
+<h2><%= @mentor.name %></h2>
 <div class="container">
-  <br/>
   <div class="mentor-row">
-    <div class="col-md-5 col-md-offset-1 blog-sidebar">
+    <div class="col-md-4 col-md-offset-1 blog-sidebar">
       <div class="sidebar-module">
         <%= image_tag @mentor.photo.url(:medium), class: "img-circle" %>
-        <h4>Email: <%= @mentor.email %></h4>
-        <h4>Employer: <%= @mentor.company %></h4>
-        <h4>Best at: <% @mentor.skills.each do |skill| %>
-          <i><%= skill.name  %></i>&nbsp
-          <% end %></h4>
-      </div>
-      <div class="col-md-5">
-        <h2><%= @mentor.name %></h2>
-        <p><%= @mentor.bio %></p>
-        <p>
-          <%= link_to "Request Appointment", "#apptModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
-        </p>
-        <%= render "modals/appointment_modal" %>
+        <br/><br/>
+        <b>Email:</b> <%= @mentor.email %><br/>
+        <b>Employer:</b> <%= @mentor.company %><br/>
+        <b>Best at:</b>
+        <% @mentor.skills.each do |skill| %>
+          <ul>
+            <li><%= skill.name %></li>
+          </ul>
+          <% end %>
       </div>
     </div>
+    <div class="col-md-5">
+      <p>
+        <%= @mentor.bio %>
+      </p>
+    </div><br/>
+  </div>
+    <div class="col-md-4">
+      <p>
+        <% if @contact_preferences.include?("email") %>
+          <%= link_to "Reach out to #{@mentor.name} by Email", "#emailModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
+        <% end %>
+      </p>
+      <p>
+        <% if @contact_preferences.include? "email" %>
+          <%= link_to "Reach out to #{@mentor.name} by SMS", "#smsModal", "data-toggle" => "modal", class: "btn btn-small btn-default" %>
+        <% end %>
+      </p>
   </div>
 </div>
-
-
-<script>$('#myModal').modal(options)</script>
+<% if current_user.profile_type == "student" %>
+  <%= render "modals/email_appointment_modal" %>
+  <%= render "modals/sms_appointment_modal" %>
+<% end %>
