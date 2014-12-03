@@ -1,16 +1,8 @@
 class Seed
 
   Mentor.create(name: "Mr. Mentor",
-                email: "coreyd303@gmail.com")
-
-  Skill.create(name: "Ruby")
-  Skill.create(name: "Sinatra")
-  Skill.create(name: "Rails")
-  Skill.create(name: "HTML/CSS")
-  Skill.create(name: "Bootstrap")
-  Skill.create(name: "Javascript")
-  Skill.create(name: "EmberJS")
-  Skill.create(name: "VPS")
+                email: "coreyd303@gmail.com",
+                phone_number: "303-249-6458")
 
   Student.create(name:     "Bob Student",
                  cohort:   "1406",
@@ -89,6 +81,9 @@ class Seed
   Mod.create(number: 3, name: "Module Three", description: "Professional Web Applications")
   Mod.create(number: 4, name: "Module Four",  description: "High-Performance Applications with APIs and Services")
   Mod.create(number: 5, name: "Graduated",    description: "Alumni")
+
+  Preference.create(name: "sms")
+  Preference.create(name: "email")
 
   Project.create(name: "Mastermind",
                  url:"http://tutorials.jumpstartlab.com/projects/mastermind.html",

@@ -3,7 +3,7 @@
     <div class="cover-container">
       <div class="inner cover">
         <p class="home-logo lead">
-          <%=image_tag("mentorship.gif", size: "443x373") %>
+          <%=image_tag("whiteline.gif", size: "443x373") %>
         </p>
       </div>
     </div>
@@ -79,11 +79,14 @@
       <div class="container marketing">
         <div class="row">
           <div class="col-lg-6 col-lg-offset-3">
-            <img src="https://pbs.twimg.com/media/B1z8XoCIUAAf5Yn.jpg" class="img-circle", style="width: 200px; height: 200px;">
+            <%=image_tag("turing.png", class: "img-circle", size: "200x200") %>
             <p>Get Started Now!</p>
-            <p><%= link_to "Login with GitHub", "auth/github", class: "btn btn-lg btn-default" %></p>
+            <p>
+              <% if current_user == nil %>
+              <%= link_to "Login with GitHub", "auth/github", class: "btn btn-lg btn-default" %>
+              <% end %>
+              </p>
           </div><!-- /.col-lg-4 -->
-            
         </div><!-- /.row -->
       </div>
     </div>
