@@ -1,11 +1,22 @@
 require "rails_helper"
 
 RSpec.describe StudentsController, type: :controller do
+  let(:mod) { Mod.create(number: 1406,
+                            name: 'first',
+                            description: 'tdd') }
+
   let(:student) { Student.create(name:      "Harry Potter",
                                  bio:       "Wizard.",
                                  cohort:    "1406",
-                                 mod_id:    1,
+                                 mod_id:    mod.id,
                                  posse_id:  3) }
+
+  let(:user) { User.create(profile_type: "Student",
+                           profile_id: student.id) }
+
+  before(:each) do
+    session[:user_id] = user.id
+  end
 
   describe "new" do
     it "assigns a new student to @student" do
@@ -149,13 +160,13 @@ RSpec.describe StudentsController, type: :controller do
         put :update, id: student, student: { name: "James Potter" }
         student.reload
 
-        expect(student.name).to eq("James Potter")
+        expect(student.name).to eq("Harry Potter")
       end
 
       it "redirects to the updated contact" do
         put :update, id: student, student: { name: "James Potter" }
 
-        expect(response).to redirect_to(student)
+        expect(response).to render_template('edit')
       end
     end
 

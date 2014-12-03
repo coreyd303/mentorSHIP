@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   post 'notifications/notify',    to: 'notifications#notify'
 
+  resources :snippets, only: [:new]
   resources :preferences
   resources :mentors
   resources :skills

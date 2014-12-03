@@ -13,8 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20141202220827) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "comments", force: true do |t|
+    t.integer "user_id"
+    t.integer "snippet_id"
+    t.string  "body"
+  end
 
   create_table "mentor_skills", force: true do |t|
     t.integer  "mentor_id"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20141202220827) do
     t.datetime "updated_at"
   end
 
-  add_index "mentor_skills", ["mentor_id"], name: "index_mentor_skills_on_mentor_id", using: :btree
-  add_index "mentor_skills", ["skill_id"], name: "index_mentor_skills_on_skill_id", using: :btree
+  add_index "mentor_skills", ["mentor_id"], name: "index_mentor_skills_on_mentor_id"
+  add_index "mentor_skills", ["skill_id"], name: "index_mentor_skills_on_skill_id"
 
   create_table "mentors", force: true do |t|
     t.string   "name"
@@ -73,6 +76,12 @@ ActiveRecord::Schema.define(version: 20141202220827) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "snippets", force: true do |t|
+    t.integer "student_id"
+    t.text    "title"
+    t.text    "body"
   end
 
   create_table "students", force: true do |t|
