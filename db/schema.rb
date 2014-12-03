@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141202220827) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: true do |t|
     t.integer "user_id"
     t.integer "snippet_id"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20141202220827) do
     t.datetime "updated_at"
   end
 
-  add_index "mentor_skills", ["mentor_id"], name: "index_mentor_skills_on_mentor_id"
-  add_index "mentor_skills", ["skill_id"], name: "index_mentor_skills_on_skill_id"
+  add_index "mentor_skills", ["mentor_id"], name: "index_mentor_skills_on_mentor_id", using: :btree
+  add_index "mentor_skills", ["skill_id"], name: "index_mentor_skills_on_skill_id", using: :btree
 
   create_table "mentors", force: true do |t|
     t.string   "name"
