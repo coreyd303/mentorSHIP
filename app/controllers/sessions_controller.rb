@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   def create
-    auth = request.env["omniauth.auth"]
+    auth  = request.env["omniauth.auth"]
     @user = User.find_by_omniauth(auth)
     if @user
       session[:user_id] = @user.id
-      redirect_to "/#{@user.profile_type}/#{@user.profile_id}"
+      redirect_to "/"
     else
       @user = User.create_with_omniauth(auth)
       session[:user_id] = @user.id
