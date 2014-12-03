@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
 
     if @student.save
-      flash.notice = 'Your profile was successfully saved!'
+      flash[:success] = 'Your profile was successfully saved!'
       redirect_to student_path(@student)
     else
       render :new
@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
-      flash.notice = 'Your profile was successfully updated!'
+      flash[:success] = 'Your profile was successfully updated!'
       redirect_to student_path(@student)
     else
       flash[:danger]  = "* = required fields"
@@ -53,7 +53,7 @@ class StudentsController < ApplicationController
   end
 
   def user_checker
-    if current_user == nil
+    if current_user  == nil
       flash[:danger] = "You must be signed in to view student profiles"
       redirect_to "/"
     else

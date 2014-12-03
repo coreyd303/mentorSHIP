@@ -1,8 +1,8 @@
 <div class="container">
   <div class="blog-header">
     <h2 class="blog-title">Student Profile: <%= @student.name %></h2>
-    <% if current_user %>
-      <center><%= link_to "Update Your Profile", edit_student_path(current_user.student), class: "btn-sm btn-info" %></center>
+    <% if current_user.id == @student.id %>
+      <center><%= link_to "Update Your Profile", edit_student_path(@student), class: "btn-sm btn-info" %></center>
     <% end %>
   </div>
   <br/>

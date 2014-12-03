@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/"
     else
-      @user = User.create_with_omniauth(auth)
+      @user             = User.create_with_omniauth(auth)
       session[:user_id] = @user.id
       redirect_to profile_type_prompt_path
     end
