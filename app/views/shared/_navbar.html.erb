@@ -13,12 +13,12 @@
         <li>&nbsp</li>
         <li><%= link_to "Home", root_path %></li>
         <% if current_user %>
-          <% if current_user.mentor %>
+          <% if current_user.profile_type %>
             <li><%= link_to "Students", students_path %></li>
             <li><%= link_to "Profile", mentor_path(current_user.mentor)  %></li>
           <% elsif current_user.student %>
             <li><%= link_to "Mentors", mentors_path %></li>
-            <li><%= link_to "Your Profile", student_path(current_user.student) %></li>
+            <li><%= link_to "Profile", student_path(current_user.student) %></li>
           <% else %>
             <li><%= link_to "SET UP ACCOUNT", profile_type_prompt_path %></li> 
           <% end %>
