@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  def create 
+  def create
     auth = request.env["omniauth.auth"]
     @user = User.find_by_omniauth(auth)
     if @user
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to profile_type_prompt_path
     end
   end
-  
+
   def destroy
     session[:user_id] = nil
     redirect_to root_path

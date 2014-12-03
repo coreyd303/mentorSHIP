@@ -1,10 +1,14 @@
 require "rails_helper"
 
 RSpec.describe StudentsController, type: :controller do
+  let(:mod) { Mod.create(number: 1406,
+                            name: 'first',
+                            description: 'tdd') }
+
   let(:student) { Student.create(name:      "Harry Potter",
                                  bio:       "Wizard.",
                                  cohort:    "1406",
-                                 mod_id:    1,
+                                 mod_id:    mod.id,
                                  posse_id:  3) }
 
   let(:user) { User.create(profile_type: "Student",

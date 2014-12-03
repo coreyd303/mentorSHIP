@@ -1,7 +1,7 @@
 class MentorsController < ApplicationController
-  before_action :set_mentor, only: [:show, :edit, :update]
-  before_action :set_student, only: [:show]
-  before_action :profile_checker
+  before_action :set_mentor,   only: [:show, :edit, :update]
+  before_action :set_student,  only: [:show]
+  before_action :user_checker, only: [:show]
 
   def index
     @mentors = Mentor.includes(:skills)
@@ -13,7 +13,9 @@ class MentorsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.new
+    @appointment         = Appointment.new
+    @notification        = Notification.new
+    @contact_preferences = find_preferences
   end
 
   def new
@@ -67,7 +69,9 @@ private
   end
 
   def set_student
-    @student = Student.find(params[:id])
+    if current_user.profile_type == "student"
+      @student = Student.find(params[:id])
+    end
   end
 
   def mentor_params
@@ -76,7 +80,18 @@ private
                                    :company,
                                    :bio,
                                    :photo,
-                                   :skills)
+                                   :skills,
+                                   :phone_number,
+                                   :preferences)
+  end
+
+  def user_checker
+    if current_user == nil
+      flash[:danger] = "You must be signed in to do that"
+      redirect_to "/"
+    else
+      profile_checker
+    end
   end
 
   def profile_checker
@@ -84,5 +99,9 @@ private
       redirect_to profile_type_prompt_path
       flash[:danger] = "You must select a profile type to continue"
     end
+  end
+
+  def find_preferences
+    @mentor.preferences.collect {|p| p.name }
   end
 end
