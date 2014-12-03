@@ -5,7 +5,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string  :url
       t.text    :description
       t.integer :mod_id
-
+      t.index   :mod_id
       t.timestamps
     end
   end

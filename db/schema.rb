@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20141202220827) do
     t.datetime "updated_at"
   end
 
+  add_index "preferences", ["mentor_id"], name: "index_preferences_on_mentor_id", using: :btree
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "url"
@@ -68,6 +70,8 @@ ActiveRecord::Schema.define(version: 20141202220827) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "projects", ["mod_id"], name: "index_projects_on_mod_id", using: :btree
 
   create_table "skills", force: true do |t|
     t.string   "name"
