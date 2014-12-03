@@ -13,10 +13,10 @@ class AppointmentsController < ApplicationController
   private
 
   def safe_params
-    new_params          = params.require(:appointment).permit(:mentor,
-                                                              :student,
-                                                              :subject, 
-                                                              :body)
+    new_params = params.require(:appointment).permit(:mentor,
+                                                     :student,
+                                                     :subject, 
+                                                     :body)
 
     new_params[:mentor]  = Mentor.find(params[:appointment][:mentor])
     new_params[:student] = Student.find(params[:appointment][:student])

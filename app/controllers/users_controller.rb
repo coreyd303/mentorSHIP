@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def update
     @user = current_user
+
     if profile_type == 'students'
       student = Student.create
       @user.update!(profile_type: profile_type, profile_id: student.id)

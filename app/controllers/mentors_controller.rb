@@ -86,7 +86,7 @@ private
   end
 
   def user_checker
-    if current_user == nil
+    if current_user  == nil
       flash[:danger] = "You must be signed in to do that"
       redirect_to "/"
     else
