@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   belongs_to :mentor
 
   def student
-    Student.find(profile_id) if profile_type == 'student'
+    Student.find(profile_id) if profile_type == 'students'
   end
 
   def mentor
-    Mentor.find(profile_id) if profile_type == 'mentor'
+    Mentor.find(profile_id) if profile_type == 'mentors'
   end
 
   def self.find_by_omniauth(auth)
