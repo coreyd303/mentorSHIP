@@ -53,7 +53,7 @@ class StudentsController < ApplicationController
   end
 
   def user_checker
-    if current_user == nil
+    if current_user  == nil
       flash[:danger] = "You must be signed in to view student profiles"
       redirect_to "/"
     else
