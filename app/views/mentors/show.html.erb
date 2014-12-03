@@ -1,4 +1,7 @@
 <h2><%= @mentor.name %></h2>
+<% if current_user.id == @mentor.id %>
+  <%= link_to "Edit your profile", edit_mentor_path(@mentor), class: "btn btn-small btn-primary" %>
+<% end %>
 <div class="container">
   <div class="mentor-row">
     <div class="col-md-4 col-md-offset-1 blog-sidebar">
@@ -17,6 +20,7 @@
     </div>
     <div class="col-md-5">
       <p>
+        <br/>
         <%= @mentor.bio %>
       </p>
     </div><br/>
