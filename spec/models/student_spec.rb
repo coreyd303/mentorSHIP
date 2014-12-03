@@ -9,6 +9,7 @@ RSpec.describe Student, :type => :model do
 
   let(:student) { Student.create(name:      "Harry Potter",
                                 bio:       "Wizard. Voldemort wishes he had my style.",
+                                email: 'harry@ex.com',
                                  cohort:    "1406",
                                  mod_id:    mod.id,
                                  posse_id:  posse.id) }

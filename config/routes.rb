@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/search',                  to: 'mentors#search'
   get 'profile_type_prompt',      to: 'static_pages#profile_type_prompt'
 
+  resources :snippets, only: [:new]
   resources :mentors
   resources :skills
   resources :students

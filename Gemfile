@@ -15,7 +15,6 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
 gem 'therubyracer'
-gem 'sqlite3'
 gem 'twilio-ruby'
 gem 'dalli'
 

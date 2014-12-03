@@ -3,6 +3,18 @@ require 'rails_helper'
 RSpec.describe MentorsController, type: :controller do
 include MentorBuilder
 
+  before(:each) do
+    user = User.create(profile_type: "Mentor",
+                       profile_id: 1) 
+
+    Student.create(name:      "Harry Potter",
+                   bio:       "Wizard.",
+                   cohort:    "1406",
+                   mod_id:    1,
+                   posse_id:  3) 
+    session[:user_id] = user.id
+  end
+
   describe 'GET index' do
     before(:each) do
       build_mentors

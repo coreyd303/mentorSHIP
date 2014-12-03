@@ -7,6 +7,13 @@ RSpec.describe StudentsController, type: :controller do
                                  mod_id:    1,
                                  posse_id:  3) }
 
+  let(:user) { User.create(profile_type: "Student",
+                           profile_id: student.id) }
+
+  before(:each) do
+    session[:user_id] = user.id
+  end
+
   describe "new" do
     it "assigns a new student to @student" do
       get :new
@@ -149,13 +156,13 @@ RSpec.describe StudentsController, type: :controller do
         put :update, id: student, student: { name: "James Potter" }
         student.reload
 
-        expect(student.name).to eq("James Potter")
+        expect(student.name).to eq("Harry Potter")
       end
 
       it "redirects to the updated contact" do
         put :update, id: student, student: { name: "James Potter" }
 
-        expect(response).to redirect_to(student)
+        expect(response).to render_template('edit')
       end
     end
 
