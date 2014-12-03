@@ -1,61 +1,45 @@
 class Seed
 
-  Mentor.create(name: "Mr. Mentor",
-                email: "coreyd303@gmail.com",
-                phone_number: "303-249-6458")
+  jeff = Mentor.create(name: "Jeff Casimir",
+                       email: "jeff@turing.io",
+                       phone_number: "202-460-0772",
+                       company: "Turing School of Software & Design",
+                       bio: "Stretching back to 2005, Jeff has more experience teaching Ruby and Rails than anyone in the world. Starting his education career with Teach for America in 2003, he’s taught middle school and high school, co-founded a middle school, and created Jumpstart Lab in 2009, Hungry Academy in 2012, and gSchool in 2013. Along the way he’s taught thousands of developers, taken nearly a hundred people from “no experience” to professional, and created over a thousand pages of instructional content.",
+                       )
 
-  Student.create(name:     "Bob Student",
-                 cohort:   "1406",
-                 mod_id:   1,
-                 posse_id: 1)
+  skill1  = Skill.create(name: "Ruby")
+  skill2  = Skill.create(name: "Sinatra")
+  skill3  = Skill.create(name: "Rails")
+  skill4  = Skill.create(name: "HTML/CSS")
+  skill5  = Skill.create(name: "Bootstrap")
+  skill6  = Skill.create(name: "Javascript")
+  skill7  = Skill.create(name: "EmberJS")
+  skill8  = Skill.create(name: "VPS")
+  skill9  = Skill.create(name: "Caching")
+  skill10 = Skill.create(name: "Perfomance")
+  skill11 = Skill.create(name: "RSPEC")
+  skill12 = Skill.create(name: "Heroku")
+  skill13 = Skill.create(name: "RSPEC")
 
-  10.times do |i|
-    Mentor.create!(name:    Faker::Name.name,
-                   email:   Faker::Internet.email,
-                   company: Faker::Company.name,
-                   bio:     Faker::Lorem.paragraph(3))
-  end
+  p1 = Preference.create(name: "sms")
+  p2 = Preference.create(name: "email")
 
-  skill1 = Skill.create(name: "Ruby")
-  skill2 = Skill.create(name: "Sinatra")
-  skill3 = Skill.create(name: "Rails")
-  skill4 = Skill.create(name: "HTML/CSS")
-  skill5 = Skill.create(name: "Bootstrap")
-  skill6 = Skill.create(name: "Javascript")
-  skill7 = Skill.create(name: "EmberJS")
-  skill8 = Skill.create(name: "VPS")
+  jeff.skills  << skill1
+  jeff.skills  << skill2
+  jeff.skills  << skill3
+  jeff.skills  << skill4
+  jeff.skills  << skill5
+  jeff.skills  << skill6
+  jeff.skills  << skill7
+  jeff.skills  << skill8
+  jeff.skills  << skill9
+  jeff.skills  << skill10
+  jeff.skills  << skill11
+  jeff.skills  << skill12
+  jeff.skills  << skill13
 
-  mentor1   = Mentor.all[0]
-  mentor2   = Mentor.all[1]
-  mentor3   = Mentor.all[2]
-  mentor4   = Mentor.all[3]
-  mentor5   = Mentor.all[4]
-  mentor6   = Mentor.all[5]
-  mentor7   = Mentor.all[6]
-  mentor8   = Mentor.all[7]
-  mentor9   = Mentor.all[8]
-  mentor10  = Mentor.all[9]
-
-  mentor1.skills  << skill1
-  mentor1.skills  << skill3
-  mentor2.skills  << skill2
-  mentor2.skills  << skill4
-  mentor3.skills  << skill6
-  mentor3.skills  << skill7
-  mentor4.skills  << skill5
-  mentor4.skills  << skill8
-  mentor5.skills  << skill3
-  mentor5.skills  << skill5
-  mentor6.skills  << skill6
-  mentor6.skills  << skill1
-  mentor7.skills  << skill2
-  mentor7.skills  << skill8
-  mentor8.skills  << skill5
-  mentor8.skills  << skill7
-  mentor9.skills  << skill6
-  mentor9.skills  << skill8
-  mentor10.skills << skill4
-  mentor10.skills << skill3
+  jeff.preferences << p1
+  jeff.preferences << p2
 
   Posse.create(name: "Backus")
   Posse.create(name: "Berners Lee")
@@ -81,9 +65,6 @@ class Seed
   Mod.create(number: 3, name: "Module Three", description: "Professional Web Applications")
   Mod.create(number: 4, name: "Module Four",  description: "High-Performance Applications with APIs and Services")
   Mod.create(number: 5, name: "Graduated",    description: "Alumni")
-
-  Preference.create(name: "sms")
-  Preference.create(name: "email")
 
   Project.create(name: "Mastermind",
                  url:"http://tutorials.jumpstartlab.com/projects/mastermind.html",
