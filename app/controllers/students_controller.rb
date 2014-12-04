@@ -67,4 +67,8 @@ class StudentsController < ApplicationController
       flash[:danger] = "You must select a profile type to continue"
     end
   end
+
+  def is_user?(current_user)
+    current_user.id == @student.id
+  end
 end

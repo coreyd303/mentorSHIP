@@ -12,4 +12,8 @@ class Student < ActiveRecord::Base
   :default_url => "turing.png"
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  def is_user?(current_user, student)
+    current_user.profile_id == student.id
+  end
 end

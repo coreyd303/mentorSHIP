@@ -1,7 +1,4 @@
 <h2><%= @student.name %></h2>
-<% if current_user.id == @student.id %>
-  <%= link_to "Edit your profile", edit_student_path(@student), class: "btn btn-small btn-primary" %>
-<% end %>
 <div class="container">
   <div class="student-row">
     <div class="col-md-4 col-md-offset-1 blog-sidebar">
@@ -10,11 +7,15 @@
         <br/><br/>
         <b>Cohort:</b> <%= @student.cohort %><br/>
         <b>Module:</b> <%= @student.mod.name %><br/>
-        <b>Posse:</b> <%= @student.posse.name %>
+        <b>Posse:</b> <%= @student.posse.name %><br/><br/>
+        <% if @student.is_user?(current_user, @student) %>
+          <%= link_to "Edit your profile", edit_student_path(@student), class: "btn btn-xs btn-default" %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-7">
       <p>
+        <br/>
         <%= @student.bio %>
       </p>
       <p>
