@@ -11,4 +11,8 @@ class Mentor < ActiveRecord::Base
 
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+
+  def is_user?(current_user, mentor)
+    current_user.profile_id == mentor.id
+  end
 end
