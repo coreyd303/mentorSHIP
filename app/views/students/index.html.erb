@@ -1,3 +1,5 @@
+<h2>Students at Turing</h2>
+<br/>
 <div class="row">
   <% @students.each do |s| %>
   <div class="col-sm-6 col-md-4">
@@ -6,8 +8,8 @@
       <div class="caption">
         <h2><%= link_to s.name, student_path(s) %></h2>
         <p>
-          <%= m.chort %><br/>
-          <%= m.mod %>
+          <%= s.cohort %><br/>
+          <%= s.mod.name %>
         </p>
       </div>
     </div>

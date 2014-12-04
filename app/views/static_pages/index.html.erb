@@ -49,19 +49,7 @@
         </div>
       </div>
 
-      <div class="container marketing">
-        <div class="row">
-          <div class="col-lg-6 col-lg-offset-3">
-            <% if @student %>
-            <%= image_tag @student.avatar.url(:thumb), class: "img-circle" %>
-            <h2><%= link_to @student.name, student_path(@student) %></h2>
-            <p>
-              Cohort: <%= @student.cohort %>&nbsp
-            </p>
-            <% end %>
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-      </div>
+      
     </div>
 
     <div class="jumbotron">

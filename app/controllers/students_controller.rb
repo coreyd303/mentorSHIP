@@ -1,7 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student,  only: [:show, :edit, :update, :destroy]
   before_action :user_checker, only: [:show]
-  before_action :profile_checker
 
   def index
     @students = Student.all
