@@ -18,7 +18,6 @@ gem 'therubyracer'
 gem 'twilio-ruby'
 gem 'jquery-turbolinks'
 gem 'dalli'
-gem 'pry'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
