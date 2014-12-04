@@ -5,24 +5,45 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+Start by cloning the repo
 
-* System dependencies
+- bundle
 
-* Configuration
+- brew install imagmagick (you will need this for paperclip, as it requires this dependency for image resizing)
 
-* Database creation
+Run migration and seed the DB (this app is set to run in all environments with PostgreSQL)
 
-* Database initialization
+- Ruby version : 2.1.2
+- Test suite uses RSPEC
 
-* How to run the test suite
+This app uses Figaro to manage secrets, these are help in a file
+config/application.yml
 
-* Services (job queues, cache servers, search engines, etc.)
+- after bundle run $figaro install 
+  - this will generate the application.yml
+  - you will need to get and include the following keys
+    * CODECLIMATE_REPO_TOKEN: 
+    * github_id: 
+    * github_secret: 
+    * sendgrid_password: 
+    * twilio_account_sid: 
+    * twilio_auth_token: 
 
-* Deployment instructions
 
-* ...
+Vision / Idea(s) for future work:
 
+- Add additional caching to improve performance
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- Add background workers for email and sms
+
+- Build connection with Slack to allow a 3 choice for contact between mentors and students
+
+- Integrate additional services
+  * contact side
+    - email, sms
+
+- Build student to student connection to create a student-mentor platform
+
+- Integrate exercism account with student profiles
+
+- Integrate people.turing.io to provide access to student portfolios from profiles
