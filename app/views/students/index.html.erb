@@ -1,0 +1,14 @@
+  <div class="container marketing">
+    <div class="row">
+      <% @students.each do |s| %>
+        <div class="col-lg-4">
+          <%= image_tag s.avatar.url(:thumb), class: "img-circle" %>
+          <h2><%= link_to s.name, student_path(s) %></h2>
+          <p>
+            <%= m.chort %><br/>
+            <%= m.mod %>
+          </p>
+        </div><!-- /.col-lg-4 -->
+      <% end %>
+    </div><!-- /.row -->
+  </div>

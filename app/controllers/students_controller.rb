@@ -3,6 +3,15 @@ class StudentsController < ApplicationController
   before_action :user_checker, only: [:show]
   before_action :profile_checker
 
+  def index
+    @students = Student.all
+  end
+
+  def show
+    @module   = @student.mod
+    @projects = @module.projects
+  end
+
   def new
     @student = Student.new
   end
@@ -16,11 +25,6 @@ class StudentsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @module   = @student.mod
-    @projects = @module.projects
   end
 
   def edit
