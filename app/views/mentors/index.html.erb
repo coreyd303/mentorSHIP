@@ -14,29 +14,22 @@
       <br/>
     </div>
 
-    <div class="row">
-      <% cache @mentors do %>
-        <div class="col-lg-4">
-          <% @mentors.each do |m| %>
-          
-            <%= image_tag m.photo.url(:thumb), class: "img-circle" %>
-            <h2><%= link_to m.name, mentor_path(m) %></h2>
-              <p>
-                <% m.skills.each do |skill| %>
-                  <%= skill.name %> &nbsp
-                <% end %>
-                <br/><br/>
-              </p>
-          </div><!-- /.col-lg-4 -->
-        <% end %>
-      <% end %>
-    </div><!-- /.row -->
+<div class="row">
+  <% cache @mentors do %>
+    <% @mentors.each do |m| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag m.photo.url(:thumb), class: "img-circle" %>
+      <div class="caption">
+        <h3><%= link_to m.name, mentor_path(m) %></h3>
+        <p>
+          <% m.skills.each do |skill| %>
+            <%= skill.name %> &nbsp
+          <% end %>
+        </p>
+      </div>
+    </div>
   </div>
-
- <!-- Bootstrap core JavaScript =========================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="../../dist/js/bootstrap.min.js"></script>
-  <script src="../../assets/js/docs.min.js"></script>
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <% end %>
+  <% end %>
+</div>

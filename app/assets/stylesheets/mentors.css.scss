@@ -1,29 +1,6 @@
 /* CUSTOMIZE THE CAROUSEL
 ------------------------------------------------- */
 
-/* Carousel base class */
-.carousel {
-  height: 500px;
-  margin-bottom: 60px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 500px;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
-  top: 0;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
-  min-width: 95%;
-  height: 500px;
-}
 
 /* JUMBOTRON FOR SHOW PAGES
 --------------------------------------------------- */
@@ -115,4 +92,13 @@
   .featurette-heading {
     margin-top: 120px;
   }
+}
+
+.thumbnail {
+  background-color: #181818;
+  border-color: #181818;
+}
+
+.thumbnail .caption {
+  color: white;
 }
