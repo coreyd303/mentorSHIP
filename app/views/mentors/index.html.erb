@@ -16,17 +16,17 @@
 
     <div class="row">
       <% cache @mentors do %>
-        <% @mentors.each do |m| %>
-          <div class="col-lg-4">
+        <div class="col-lg-4">
+          <% @mentors.each do |m| %>
+          
             <%= image_tag m.photo.url(:thumb), class: "img-circle" %>
             <h2><%= link_to m.name, mentor_path(m) %></h2>
-            <div>
               <p>
                 <% m.skills.each do |skill| %>
                   <%= skill.name %> &nbsp
                 <% end %>
+                <br/><br/>
               </p>
-            </div>
           </div><!-- /.col-lg-4 -->
         <% end %>
       <% end %>
