@@ -13,7 +13,7 @@
         <li>&nbsp</li>
         <li><%= link_to "Home", root_path %></li>
         <% if current_user %>
-          <% if current_user.profile_type %>
+          <% if current_user.mentor %>
             <li><%= link_to "Students", students_path %></li>
             <li><%= link_to "Profile", mentor_path(current_user.mentor)  %></li>
           <% elsif current_user.student %>
