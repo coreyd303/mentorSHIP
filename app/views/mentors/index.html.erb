@@ -21,7 +21,9 @@
             <%= image_tag m.photo.url(:thumb), class: "img-circle" %>
             <h2><%= link_to m.name, mentor_path(m) %></h2>
             <p>
-              <%= render partial: 'skills/skill', collection: @mentors, as: :m %>
+              <% m.skills.each do |skill| %>
+                <%= skill.name %> &nbsp
+              <% end %>
             </p>
           </div><!-- /.col-lg-4 -->
         <% end %>

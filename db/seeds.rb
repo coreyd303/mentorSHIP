@@ -42,7 +42,6 @@ attr_reader :build_jeff,
     @skill10 = Skill.create(name: "Perfomance")
     @skill11 = Skill.create(name: "RSPEC")
     @skill12 = Skill.create(name: "Heroku")
-    @skill13 = Skill.create(name: "RSPEC")
     puts "skills built"
   end
 
@@ -65,7 +64,6 @@ attr_reader :build_jeff,
     @jeff.skills  << @skill10
     @jeff.skills  << @skill11
     @jeff.skills  << @skill12
-    @jeff.skills  << @skill13
     puts "Jeff is skilled"
   end
 
